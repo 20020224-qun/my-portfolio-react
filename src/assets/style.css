@@ -318,22 +318,33 @@
     background: transparent !important; /* 確保沒有背景色遮擋 */
 }
 
-.core-values h3, 
-.experience-content h3 {
+/* ==============================
+   卡背標題統一：靠右、顯色、高級感
+============================== */
+.card-back h3 {
+    /* 🚀 靠右對齊核心邏輯 */
     display: block !important;
-    width: fit-content !important;
-    margin-left: auto !important; /* 往右推 */
-    margin-right: 60px !important; /* 距離右邊界 60px */
-    margin-bottom: 40px !important;
+    width: fit-content !important; /* 必須設為 fit-content，auto 推力才有效 */
+    margin-left: auto !important;  /* 🚀 把左邊撐開，推向右方 */
+    margin-right: 40px !important; /* 🚀 距離右邊界留一點呼吸空間 */
     
-    color: #ffffff !important; /* 強制純白 */
+    /* 🚀 視覺格式 */
+    margin-top: 40px !important;    /* 距離頂部一點距離 */
+    margin-bottom: 30px !important;
+    padding-bottom: 8px;
+    
+    color: #ffffff !important;      /* 純白顯色 */
     font-size: 2.2rem !important;
     font-weight: 800 !important;
     letter-spacing: 5px !important;
+    text-transform: uppercase;
+    
+    /* 🚀 職人感底線 */
     border-bottom: 3px solid #646cff !important;
-    padding-bottom: 10px;
-    z-index: 20;
+    
+    /* 確保在最前方 */
     position: relative;
+    z-index: 20;
 }
 
 /* 3. 小標題飾條與顏色 */
