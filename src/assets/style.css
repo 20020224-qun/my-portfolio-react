@@ -202,42 +202,51 @@
 }
 
 /* ==============================
-   3. 簡歷區塊：專業 3D 翻牌系統
+   3. 簡歷區塊：橫向置中與尺寸統一
 ============================== */
+#resume {
+    display: flex;
+    justify-content: center; /* 🚀 確保整個容器在網頁水平置中 */
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px 0;
+}
+
 .resume-container {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* 🚀 確保卡片在容器內置中 */
     align-items: center;
-    gap: 30px;
-    width: 90%;
-    max-width: 1300px;
-    height: 600px; /* 增加高度確保文字舒適 */
+    gap: 40px;               /* 🚀 增加間距，讓職人作品感更強 */
+    width: 95%;              /* 增加容納寬度 */
+    max-width: 1400px;
+    height: 600px;
     margin: 0 auto;
 }
 
 .card {
-    flex: 1;
+    /* 🚀 初始狀態：三張卡片完全等寬 */
+    flex: 1; 
     height: 100%;
-    perspective: 1500px; /* 3D 視距 */
+    max-width: 400px;        /* 🚀 限制初始寬度，避免縮小時太寬，展開時太窄 */
+    perspective: 1500px;
     cursor: pointer;
-    transition: flex 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 🚀 點擊後變寬：一次只能翻一張的邏輯由 React 控制 className */
+/* 🚀 點擊後：展開的卡片打破寬度限制並撐開 */
 .card.active-card {
-    flex: 4; 
+    flex: 3;                 /* 展開比例 */
+    max-width: 900px;        /* 🚀 展開後的最大寬度限制 */
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d; /* 核心：開啟 3D 空間 */
+    transform-style: preserve-3d;
 }
 
-/* 🚀 翻轉觸發 */
 .card.active-card .card-inner {
     transform: rotateY(180deg);
 }
@@ -246,48 +255,34 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* 翻轉時隱藏背面 */
     backface-visibility: hidden;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1); /* 柔和的高級感陰影 */
 }
 
-/* --- 卡面設定 --- */
+/* 統一卡面圖片縮放邏輯 */
 .card-front img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 🚀 確保 7-1, 8-1, 9-1 都能填滿格子 */
 }
 
-/* --- 🚀 統一卡背：7-2.jpg + 灰色半透明疊加層 --- */
+/* 統一卡背設定 */
 .card-back {
-    background-color: #2d3436; /* 基礎深灰色 */
+    background-color: #2d3436;
     transform: rotateY(180deg);
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-/* 使用 ::before 來放入 7-2.jpg 並調整透明度 */
 .card-back::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('/images/7-2.jpg'); /* 請確保路徑正確 */
+    inset: 0;
+    background-image: url('/images/7-2.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* 🚀 灰色半透明感：讓它變得很像背景 */
+    opacity: 0.15; /* 🚀 灰色透明感 */
     z-index: 0;
-}
-
-/* 確保內容在背景之上 */
-.resume-info {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
 }
 }
