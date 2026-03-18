@@ -412,8 +412,8 @@
     display: grid !important;
     /* 🚀 強制排成 4 欄，每欄等寬 */
     grid-template-columns: repeat(3, 1fr) !important; 
-    gap: 20px;            /* Logo 之間的間距 */
-    padding: 40px 0 20px 0;
+    gap: 25px;            /* Logo 之間的間距 */
+    padding: 20px 0 20px 0;
     width: 100%;
     flex: 1;              /* 填滿剩餘空間 */
     align-content: start; /* 網格內容從上方開始排 */
@@ -427,7 +427,7 @@
     background: rgba(255, 255, 255, 0.05); /* 淡淡的底色方塊 */
     border-radius: 12px;
     aspect-ratio: 1.1 / 1;      /* 確保是正方形 */
-    padding: -10px;
+    padding: -5px;
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
