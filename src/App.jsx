@@ -230,14 +230,21 @@ function App() {
       </section>
 
       <section id="portfolio" className="section">
-        <div className="portfolio-container scroll-reveal">
-          <h2 className="section-title">PORTFOLIO</h2>
-          <div className="filter-buttons">
-            {['all', 'web', 'jewelry', 'product', '3d'].map(cat => (
-              <button key={cat} className={`filter-btn ${filter === cat ? 'active' : ''}`} onClick={() => setFilter(cat)}>{cat.toUpperCase()}</button>
-            ))}
-          </div>
-          <div className="portfolio-grid">
+            {/* 🚀 新增一個 header 容器來達成水平對齊 */}
+            <div className="portfolio-header">
+              <h2 className="section-title">PORTFOLIO</h2>
+              <div className="filter-buttons">
+                {['all', 'web', 'jewelry', 'product', '3d'].map(cat => (
+                  <button 
+                    key={cat} 
+                    className={`filter-btn ${filter === cat ? 'active' : ''}`} 
+                    onClick={() => setFilter(cat)}
+                  >
+                    {cat.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+                    <div className="portfolio-grid">
             {filteredProjects.map((project) => (
               <div key={project.id} className="portfolio-item" onClick={() => setSelectedProject(project)}>
                 <div className="item-overlay"><span>VIEW</span></div>
