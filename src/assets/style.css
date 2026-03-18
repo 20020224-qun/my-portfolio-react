@@ -777,7 +777,7 @@ html {
 
 /* 🚀 修正：提升藍色標籤的存在感 */
 #contact .info-label {
-    font-size: 0.95rem !important; /* 放大字級，不要讓它縮在那裡 */
+    font-size: 3.9rem !important; /* 放大字級，不要讓它縮在那裡 */
     letter-spacing: 6px !important; /* 更大的字間距營造高級感 */
     color: #535bf2 !important; /* 稍微加深一點點藍色，增加對比度 */
     font-weight: 800 !important;
@@ -813,7 +813,7 @@ html {
 
 /* 強制右側標籤變大變藍 */
 #contact .info-label {
-    font-size: 1.1rem !important; 
+    font-size: 3.9rem !important; 
     color: #535bf2 !important;
     display: block !important;
     letter-spacing: 5px !important;
