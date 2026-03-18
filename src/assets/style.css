@@ -468,7 +468,7 @@
 #portfolio {
     /* 🚀 關鍵：當從導覽列跳轉過來時，上方預留 15vh (螢幕高度的 15%) */
     /* 這樣標題就會停在螢幕中間偏上的位置，而不是死貼著頂部 */
-    scroll-margin-top: 20vh !important; 
+    scroll-margin-top: 60vh !important; 
     
     padding: 80px 5%;
     background-color: #ffffff;
@@ -710,6 +710,7 @@ html {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
+
 /* ==============================
    5. 聯絡區塊 (Contact Section)
 ============================== */
