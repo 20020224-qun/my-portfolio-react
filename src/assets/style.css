@@ -465,7 +465,20 @@
 /* ==============================
    4. 作品集：全對稱置中佈局
 ============================== */
+#portfolio {
+    /* 🚀 關鍵：當從導覽列跳轉過來時，上方預留 15vh (螢幕高度的 15%) */
+    /* 這樣標題就會停在螢幕中間偏上的位置，而不是死貼著頂部 */
+    scroll-margin-top: 15vh !important; 
+    
+    padding: 80px 5%;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
 
+/* 確保全域滾動是平滑的 */
+html {
+    scroll-behavior: smooth;
+}
 .portfolio-header {
     display: flex !important;
     flex-direction: column !important; /* 🚀 關鍵：讓標題跟按鈕變成上下分行 */
