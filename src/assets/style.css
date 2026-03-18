@@ -468,7 +468,7 @@
 #portfolio {
     /* 🚀 關鍵：當從導覽列跳轉過來時，上方預留 15vh (螢幕高度的 15%) */
     /* 這樣標題就會停在螢幕中間偏上的位置，而不是死貼著頂部 */
-    scroll-margin-top: 60vh !important; 
+    scroll-margin-top: 5vh !important; 
     
     padding: 80px 5%;
     background-color: #ffffff;
@@ -757,88 +757,20 @@ html {
     max-width: 500px;
 }
 
-/* 🚀 右側：聯絡清單 */
-.contact-info {
-    flex: 0.8;
-    display: flex;
-    flex-direction: column;
-    gap: 45px;
-}
-
-.info-item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.info-label {
-    font-size: 0.8rem;
-    letter-spacing: 4px;
-    color: #646cff; /* 品牌藍標籤 */
-    font-weight: 700;
-}
-
-.info-link, .info-text {
-    font-size: 1.6rem;
+/* 聯絡區塊：電腦版兩欄排版 */
+#contact {
+    padding: 120px 8% !important;
+    background-color: #0f0f0f;
     color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    min-height: 80vh;
 }
 
-.info-link:hover {
-    color: #646cff;
-    padding-left: 10px; /* 微幅向右滑動感 */
-}
-
-/* 🚀 Email 複製按鈕專屬樣式 */
-.email-row {
+.contact-container {
     display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.copy-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.copy-btn:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-.copy-btn.copied {
-    background: #44bd32; /* 複製成功變綠色 */
-    border-color: #44bd32;
-    color: white;
-}
-
-/* 🚀 PDF 下載按鈕加強 */
-.download-link {
-    display: inline-block;
-    border-bottom: 2px solid rgba(100, 108, 255, 0.3);
-    padding-bottom: 5px;
-}
-
-.download-link:hover {
-    border-color: #646cff;
-}
-
-/* 📱 手機版調整 */
-@media (max-width: 992px) {
-    .contact-container {
-        flex-direction: column;
-        gap: 60px;
-    }
-    .contact-title {
-        font-size: 3.5rem;
-    }
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 80px;
 }
 }
