@@ -93,6 +93,35 @@ function App() {
 
   const filteredProjects = projects.filter(p => filter === 'all' || p.category === filter);
 
+  // --- 🚀 平滑滾動處理函數 ---
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; 
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setIsMenuOpen(false);
+    }
+  };
+
+  // --- 🚀 專屬 Logo 更新函數：先滾動再重整 ---
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 給予 500ms 的滾動緩衝時間，然後重新整理
+    setTimeout(() => {
+      window.location.href = '/'; 
+    }, 600);
+  };
+
   useEffect(() => {
     document.title = "Quilla_Huang";
     let link = document.querySelector("link[rel~='icon']");
@@ -144,7 +173,8 @@ function App() {
     <div className="portfolio-app">
       <nav className="navbar">
         <div className="logo">
-          <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = "/"; }}>
+          {/* 使用 handleLogoClick 實現優雅更新 */}
+          <a href="/" onClick={handleLogoClick}>
             <img src="/images/logo.png" alt="Logo" />
           </a>
         </div>
@@ -158,11 +188,11 @@ function App() {
         </div>
 
         <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
-          <li><a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a></li>
-          <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
-          <li><a href="#resume" onClick={() => setIsMenuOpen(false)}>Resume</a></li>
-          <li><a href="#portfolio" onClick={() => setIsMenuOpen(false)}>Portfolio</a></li>
-          <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+          <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a></li>
+          <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a></li>
+          <li><a href="#resume" onClick={(e) => scrollToSection(e, 'resume')}>Resume</a></li>
+          <li><a href="#portfolio" onClick={(e) => scrollToSection(e, 'portfolio')}>Portfolio</a></li>
+          <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
         </ul>
       </nav>
 
@@ -258,7 +288,7 @@ function App() {
         </div>
       </section>
 
-      {/* CONTACT SECTION - 美感平衡修正版 */}
+      {/* CONTACT SECTION */}
       <section id="contact" className="section">
         <div className="contact-container scroll-reveal">
           <div className="contact-visual">
