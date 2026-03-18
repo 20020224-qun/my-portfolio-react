@@ -712,52 +712,101 @@ html {
 }
 
 /* ==============================
-    5. 聯絡區塊 (地毯式精確路徑版)
+    5. 聯絡區塊 (左右分治最終版)
 ============================== */
 
-/* 1. 先解決外層容器，確保它是 flex 佈局 */
-section#contact.section {
+#contact {
     padding: 160px 10% !important;
+    background-color: #faf9f6 !important;
+    min-height: 70vh;
     display: flex !important;
-    justify-content: center !important;
+    align-items: center !important;
 }
 
-/* 2. 強制左右兩欄對齊 */
 #contact .contact-container {
     display: flex !important;
-    width: 100% !important;
-    max-width: 1300px !important;
-    gap: 0 !important;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-/* 🚀 3. 右側：最重要的藍色標籤 (EMAIL/PHONE) */
-/* 我們用最強的路徑去抓它 */
-#contact .contact-info .info-item span.info-label {
-    font-size: 2rem !important; /* 先設定 2rem 看看有沒有變超大 */
-    color: #535bf2 !important;
-    display: block !important;
-    letter-spacing: 5px !important;
+/* --- 左側：恢復妳原本最愛的完美樣式 --- */
+#contact .contact-visual {
+    flex: 1.2; /* 稍微佔比大一點點 */
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left !important; /* 確保絕對靠左 */
+}
+
+#contact .contact-title {
+    font-size: clamp(3.2rem, 6vw, 4.5rem) !important;
     font-weight: 900 !important;
-    margin-bottom: 15px !important;
-    text-transform: uppercase !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -3px !important;
+    color: #1a1a1a !important;
+    margin-bottom: 25px !important;
+    text-align: left !important;
 }
 
-/* 🚀 4. 右側：聯絡內容 (你的 Email 和 電話) */
-#contact .contact-info .info-item .info-link,
-#contact .contact-info .info-item .info-text {
-    font-size: 1.8rem !important;
+#contact .contact-statement {
+    font-size: 1.15rem !important;
+    color: #555 !important;
+    line-height: 1.8 !important;
+    max-width: 450px;
+    text-align: left !important;
+}
+
+/* --- 右側：鎖定目標，精準放大 --- */
+#contact .contact-info {
+    flex: 1;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px; /* 增加間距，讓右側更有呼吸感 */
+    border-left: 1px solid #dcd9d0;
+    text-align: left !important;
+}
+
+/* 🚀 這裡就是妳要的：藍色標籤放大 */
+#contact .info-label {
+    font-size: 1.2rem !important; /* 1.2rem 是標籤感的高級上限，3.9 真的太巨了 */
+    letter-spacing: 6px !important;
+    color: #535bf2 !important; 
+    font-weight: 800 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    text-align: left !important;
+}
+
+/* 🚀 聯絡內容（Email/Phone）：再次強化重量 */
+#contact .info-link, 
+#contact .info-text {
+    font-size: 2.1rem !important; 
     color: #1a1a1a !important;
     font-weight: 700 !important;
-    display: inline-block !important;
+    line-height: 1.1 !important;
     text-decoration: none !important;
+    text-align: left !important;
+    display: inline-block !important;
 }
 
-/* 5. 分隔線 */
-#contact .contact-info {
-    border-left: 1px solid #dcd9d0 !important;
-    padding-left: 80px !important;
-    flex: 1 !important;
+/* 複製按鈕微調，不影響文字佈局 */
+.email-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 手機版適應 */
+@media (max-width: 992px) {
+    #contact .contact-container { flex-direction: column; }
+    #contact .contact-visual { padding-right: 0; margin-bottom: 60px; }
+    #contact .contact-info { padding-left: 0; border-left: none; border-top: 1px solid #dcd9d0; padding-top: 60px; }
+    #contact .info-link, #contact .info-text { font-size: 1.6rem !important; }
 }
 }
