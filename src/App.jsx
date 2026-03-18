@@ -320,13 +320,7 @@ function App() {
             <div className="info-item">
               <span className="info-label">RESUME</span>
               <a 
-                href={`${process.env.PUBLIC_URL || ''}/Daisy_Resume.pdf`} 
-                download="黃亮裙_履歷.pdf"
-                className="info-link download-link"
-                onClick={(e) => {
-                  // 這裡加一個簡單的測試，點擊時如果抓不到，會在 Console 報錯
-                  console.log("正在嘗試從以下路徑下載:", e.currentTarget.href);
-                }}
+                href="/Daisy_Resume.pdf" download="黃亮裙_履歷.pdf" className="info-link download-link"
               >
                 下載履歷 / PDF
               </a>
