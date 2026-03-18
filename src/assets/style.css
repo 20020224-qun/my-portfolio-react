@@ -394,7 +394,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 120px 20px 20px 20px; /* 避開標題 */
+    padding: 180px 20px 20px 20px; /* 避開標題 */
 }
 
 .full-res-img {
