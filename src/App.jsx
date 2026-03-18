@@ -146,8 +146,8 @@ function App() {
     <div className="portfolio-app">
       <nav className="navbar">
         <div className="logo">
-          <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }}>
-            <img src="/images/logo.png" alt="Logo" />
+          <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = "/"; }}>
+          <img src="/images/logo.png" alt="Logo" />
           </a>
         </div>
 
