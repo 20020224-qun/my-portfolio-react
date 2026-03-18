@@ -434,8 +434,8 @@
 
 /* 🚀 圖示本體 */
 .card-back .grid-item img {
-    width: 80%;               /* 不要撐太滿，留點呼吸感 */
-    height: 80%;
+    width: 100%;               /* 不要撐太滿，留點呼吸感 */
+    height: 100%;
     object-fit: contain;      /* 保持比例 */
     filter: grayscale(20%);   /* 稍微降飽和度，更有職人感 */
     transition: all 0.4s ease;
@@ -452,6 +452,6 @@
 
 .card-back .grid-item:hover img {
     filter: grayscale(0%);                 /* 滑過時恢復全彩 */
-    transform: scale(1.1);                 /* Logo 放大 */
+    transform: scale(1.25);                 /* Logo 放大 */
 }
 }
