@@ -712,120 +712,52 @@ html {
 }
 
 /* ==============================
-    5. 聯絡區塊 (解決左側不顯示問題)
+    5. 聯絡區塊 (地毯式精確路徑版)
 ============================== */
 
-/* 使用 ID 選擇器開頭，確保權重最高 */
-#contact {
+/* 1. 先解決外層容器，確保它是 flex 佈局 */
+section#contact.section {
     padding: 160px 10% !important;
-    background-color: #faf9f6 !important;
-    color: #1a1a1a !important;
-    min-height: 70vh;
     display: flex !important;
-    align-items: center !important;
-    text-align: left !important; /* 強制修正可能被 .section 蓋掉的對齊 */
+    justify-content: center !important;
 }
 
+/* 2. 強制左右兩欄對齊 */
 #contact .contact-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch; 
-    max-width: 1300px;
-    margin: 0 auto;
-    width: 100%;
-    gap: 0;
+    display: flex !important;
+    width: 100% !important;
+    max-width: 1300px !important;
+    gap: 0 !important;
 }
 
-/* 🚀 關鍵修正：確保左側區塊正確顯示 */
-#contact .contact-visual {
-    flex: 1;
-    padding-right: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left !important; /* 確保標題與文字絕對靠左 */
-}
-
-#contact .contact-title {
-    font-size: clamp(3.2rem, 6vw, 4.8rem) !important;
-    font-weight: 900 !important;
-    line-height: 1.05 !important;
-    letter-spacing: -3px !important;
-    color: #1a1a1a !important;
-    margin-bottom: 20px !important;
-    margin-top: 0 !important;
-}
-
-#contact .contact-statement {
-    font-size: 1.1rem !important;
-    color: #555 !important;
-    line-height: 1.8 !important;
-    max-width: 400px;
-    margin-left: 0 !important; /* 防止被其他樣式推到 */
-}
-
-/* 右側：聯絡細節區塊 */
-#contact .contact-info {
-    flex: 1;
-    padding-left: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 50px; /* 增加間距，讓右側看起來更舒展、更有分量 */
-    border-left: 1px solid #dcd9d0;
-}
-
-/* 🚀 修正：提升藍色標籤的存在感 */
-#contact .info-label {
-    font-size: 3.9rem !important; /* 放大字級，不要讓它縮在那裡 */
-    letter-spacing: 6px !important; /* 更大的字間距營造高級感 */
-    color: #535bf2 !important; /* 稍微加深一點點藍色，增加對比度 */
-    font-weight: 800 !important;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-}
-
-/* 🚀 修正：讓主要內容（Email/Phone）更有力道 */
-#contact .info-link, 
-#contact .info-text {
-    font-size: 1.9rem !important; /* 再次微調放大 */
-    color: #1a1a1a !important;
-    font-weight: 700 !important;
-    line-height: 1.1;
-}
-
-/* 修正左側：讓它不要過重蓋過右邊 */
-#contact .contact-title {
-    font-size: clamp(3rem, 5.5vw, 4.2rem) !important; /* 稍微縮小上限 */
-    letter-spacing: -2px !important; /* 不要太擠 */
-    margin-bottom: 25px !important;
-}
-
-#contact .contact-statement {
-    font-size: 1.15rem !important;
-    color: #444 !important; /* 文字顏色加深，增加左側下方的重量感來平衡大標 */
-    opacity: 0.9;
-}
-/* 將這段貼在 CSS 最底部 */
-#contact .contact-info * {
-    text-align: left !important;
-}
-
-/* 強制右側標籤變大變藍 */
-#contact .info-label {
-    font-size: 3.9rem !important; 
+/* 🚀 3. 右側：最重要的藍色標籤 (EMAIL/PHONE) */
+/* 我們用最強的路徑去抓它 */
+#contact .contact-info .info-item span.info-label {
+    font-size: 2rem !important; /* 先設定 2rem 看看有沒有變超大 */
     color: #535bf2 !important;
     display: block !important;
     letter-spacing: 5px !important;
-    font-weight: 800 !important;
+    font-weight: 900 !important;
+    margin-bottom: 15px !important;
+    text-transform: uppercase !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* 強制 Email 與電話變超大 */
-#contact .info-link, 
-#contact .info-text {
-    font-size: 2.2rem !important; /* 故意設超大來測試有沒有生效 */
+/* 🚀 4. 右側：聯絡內容 (你的 Email 和 電話) */
+#contact .contact-info .info-item .info-link,
+#contact .contact-info .info-item .info-text {
+    font-size: 1.8rem !important;
     color: #1a1a1a !important;
-    font-weight: 800 !important;
-    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+}
+
+/* 5. 分隔線 */
+#contact .contact-info {
+    border-left: 1px solid #dcd9d0 !important;
+    padding-left: 80px !important;
+    flex: 1 !important;
 }
 }
