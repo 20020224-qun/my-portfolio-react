@@ -469,8 +469,9 @@
 /* 🚀 關鍵：讓標題與按鈕容器變成橫向排列 */
 .portfolio-header {
     display: flex !important;
-    justify-content: space-between !important; /* 標題左、按鈕右 */
+    flex-direction: column !important;/* 標題左、按鈕右 */
     align-items: center !important;            /* 垂直對齊中心 */
+    justify-content: center !important;
     max-width: 1400px;
     margin: 0 auto 60px auto;      
     padding: 0 20px;
