@@ -643,7 +643,7 @@ html {
     justify-content: center;
     align-items: center;
     cursor: default;               /* 內容區不要有關閉提示 */
-    transform: translateY(30px);
+    transform: translateY(60px);
 }
 
 /* 🚀 3. 媒體本體 (圖片或影片) */
