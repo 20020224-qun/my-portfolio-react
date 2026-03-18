@@ -430,15 +430,17 @@ body {
     box-sizing: border-box;
 }
 
-.grid-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;      /* 靜態時切齊邊緣 */
-    background: transparent; 
-    margin: 0;
-    padding: 0;
+.grid-item img {
+    /* 🚀 關鍵修正：從 90% 改成 100%，讓它貼齊格子邊緣 */
+    width: 100%;           
+    height: 100%;
+    
+    /* 💡 如果你的 Icon 是去背的 PNG，建議改用 contain 避免切到邊 */
+    /* 如果是滿版背景圖，才用 cover */
+    object-fit: contain;  
+    
+    display: block;
+    transition: transform 0.3s ease-out;
 }
 
 .grid-item img {
