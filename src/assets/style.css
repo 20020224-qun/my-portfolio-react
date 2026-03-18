@@ -463,36 +463,35 @@
 }
 
 /* ==============================
-   4. 作品集區塊：水平對齊修正版
+   4. 作品集：全對稱置中佈局
 ============================== */
 
-/* 🚀 關鍵：讓標題與按鈕容器變成橫向排列 */
 .portfolio-header {
     display: flex !important;
-    flex-direction: column !important;/* 標題左、按鈕右 */
-    align-items: center !important;            /* 垂直對齊中心 */
+    flex-direction: column !important; /* 🚀 關鍵：讓標題跟按鈕變成上下分行 */
+    align-items: center !important;    /* 🚀 關鍵：水平置中 */
     justify-content: center !important;
     max-width: 1400px;
-    margin: 0 auto 60px auto;      
+    margin: 0 auto 50px auto;      
     padding: 0 20px;
-    flex-wrap: wrap;               /* 手機版自動換行 */
-    gap: 30px;
+    gap: 20px;                         /* 標題與按鈕之間的間距 */
 }
 
-/* 修正你的標題類名 */
 .section-title {
     font-size: 2.8rem;
     font-weight: 850;
-    letter-spacing: 8px;
+    letter-spacing: 12px;              /* 增加字距讓置中更有張力 */
     color: #2d3436;
     text-transform: uppercase;
-    margin: 0 !important; /* 🚀 移除原本置中用的 margin-bottom */
+    margin: 0 !important;
+    text-align: center;                /* 文字本身也置中 */
 }
 
-/* 修正你的按鈕容器類名 */
 .filter-buttons {
     display: flex;
-    gap: 15px; /* 縮小按鈕間距，讓它在右邊更緊湊 */
+    justify-content: center;           /* 🚀 按鈕群組置中 */
+    flex-wrap: wrap;                   /* 手機版自動換行 */
+    gap: 15px; 
     margin: 0 !important; 
 }
 
@@ -506,14 +505,10 @@
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
-    white-space: nowrap; /* 🚀 確保文字不換行 */
+    letter-spacing: 2px;
 }
 
-/* 藍色底線與 Active 狀態 */
-.filter-btn.active {
-    color: #646cff !important;
-}
-
+/* 保持底線動畫 */
 .filter-btn::after {
     content: "";
     position: absolute;
@@ -528,7 +523,11 @@
 
 .filter-btn.active::after,
 .filter-btn:hover::after {
-    width: 70% !important;
+    width: 60% !important;
+}
+
+.filter-btn.active {
+    color: #646cff !important;
 }
 
 /* 🚀 作品牆網格 */
