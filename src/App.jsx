@@ -61,7 +61,7 @@ function ResumeCard({ frontImg, children, isFlipped, onFlip }) {
   );
 }
 
-// --- 技能卡片 (9-1) ---
+// --- 技能卡片 ---
 function SkillCard({ isFlipped, onFlip }) {
   return (
     <div className={`card ${isFlipped ? 'active-card' : ''}`} onClick={onFlip}>
@@ -166,6 +166,7 @@ function App() {
         </ul>
       </nav>
 
+      {/* HOME SECTION */}
       <section id="home" className="section">
         <div className="home-container scroll-reveal">
           <img src="/images/1.png" alt="Left" className="img-left" />
@@ -173,6 +174,7 @@ function App() {
         </div>
       </section>
 
+      {/* ABOUT SECTION */}
       <section id="about" className="section">
         <div className="about-container scroll-reveal">
           <img src="/images/2-2.png" alt="About Left" className="about-img-left" />
@@ -180,6 +182,7 @@ function App() {
         </div>
       </section>
 
+      {/* RESUME SECTION */}
       <section id="resume" className="section">
         <div className="resume-container scroll-reveal">
           <ResumeCard 
@@ -224,6 +227,7 @@ function App() {
         </div>
       </section>
 
+      {/* PORTFOLIO SECTION */}
       <section id="portfolio" className="section">
         <div className="portfolio-header">
           <h2 className="section-title">PORTFOLIO</h2>
@@ -254,9 +258,9 @@ function App() {
         </div>
       </section>
 
+      {/* CONTACT SECTION - 美感平衡修正版 */}
       <section id="contact" className="section">
         <div className="contact-container scroll-reveal">
-          {/* 左側：品牌標題區 */}
           <div className="contact-visual">
             <h2 className="contact-title">LET'S WORK<br />TOGETHER.</h2>
             <p className="contact-statement">
@@ -265,9 +269,6 @@ function App() {
             </p>
           </div>
 
-          {/* 中間的分隔線會透過 CSS 產生 */}
-
-          {/* 右側：一眼就能看清的聯絡重點 */}
           <div className="contact-info">
             <div className="info-item">
               <span className="info-label">EMAIL</span>
