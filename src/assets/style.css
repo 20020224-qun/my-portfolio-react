@@ -315,12 +315,11 @@ body {
     color: #fff;
     margin-bottom: 8px; /* 增加與描述的距離 */
     display: block;
-    border-left: 3px solid #646cff; /* 💡 增加一個設計感的小側邊條 */
     padding-left: 10px;
 }
 
 .value-desc {
-    font-size: 1.1rem; /* 🚀 從 1rem 調升到 1.1rem，讓字體變大 */
+    font-size: 1.8rem; /* 🚀 從 1rem 調升到 1.1rem，讓字體變大 */
     color: #e0e0e0;   /* 🚀 讓顏色亮一點（#ccc 偏暗），提高對比度 */
     line-height: 1.6;  /* 🚀 調升行高，避免長句子擠成一團 */
     letter-spacing: 0.5px; /* 增加字距，提升易讀性 */
