@@ -182,8 +182,6 @@ function App() {
 
       <section id="resume" className="section">
         <div className="resume-container scroll-reveal">
-          
-          {/* --- 7-1 專業核心 --- */}
           <ResumeCard 
             frontImg="/images/7-1.png" 
             isFlipped={activeResumeIndex === 0} 
@@ -206,7 +204,6 @@ function App() {
             </div>
           </ResumeCard>
 
-          {/* --- 8-1 核心經驗 --- */}
           <ResumeCard 
             frontImg="/images/8-1.png" 
             isFlipped={activeResumeIndex === 1} 
@@ -220,42 +217,41 @@ function App() {
             </div>
           </ResumeCard>
 
-          {/* --- 9-1 技能專長 --- */}
           <SkillCard 
             isFlipped={activeResumeIndex === 2} 
             onFlip={() => setActiveResumeIndex(activeResumeIndex === 2 ? null : 2)} 
           />
-
         </div>
       </section>
 
+      {/* 🚀 作品集區塊：修正後的結構 */}
       <section id="portfolio" className="section">
-            {/* 🚀 新增一個 header 容器來達成水平對齊 */}
-            <div className="portfolio-header">
-              <h2 className="section-title">PORTFOLIO</h2>
-              <div className="filter-buttons">
-                {['all', 'web', 'jewelry', 'product', '3d'].map(cat => (
-                  <button 
-                    key={cat} 
-                    className={`filter-btn ${filter === cat ? 'active' : ''}`} 
-                    onClick={() => setFilter(cat)}
-                  >
-                    {cat.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-                    <div className="portfolio-grid">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="portfolio-item" onClick={() => setSelectedProject(project)}>
-                <div className="item-overlay"><span>VIEW</span></div>
-                {project.type === 'video' ? (
-                   <video src={project.src} muted loop playsInline onMouseOver={e => e.target.play()} onMouseOut={e => e.target.pause()} />
-                ) : (
-                   <img src={project.src} alt={project.category} />
-                )}
-              </div>
+        <div className="portfolio-header">
+          <h2 className="section-title">PORTFOLIO</h2>
+          <div className="filter-buttons">
+            {['all', 'web', 'jewelry', 'product', '3d'].map(cat => (
+              <button 
+                key={cat} 
+                className={`filter-btn ${filter === cat ? 'active' : ''}`} 
+                onClick={() => setFilter(cat)}
+              >
+                {cat.toUpperCase()}
+              </button>
             ))}
           </div>
+        </div>
+
+        <div className="portfolio-grid">
+          {filteredProjects.map((project) => (
+            <div key={project.id} className="portfolio-item" onClick={() => setSelectedProject(project)}>
+              <div className="item-overlay"><span>VIEW</span></div>
+              {project.type === 'video' ? (
+                 <video src={project.src} muted loop playsInline onMouseOver={e => e.target.play()} onMouseOut={e => e.target.pause()} />
+              ) : (
+                 <img src={project.src} alt={project.category} />
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
