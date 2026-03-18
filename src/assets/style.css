@@ -294,34 +294,37 @@ body {
     box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
 }
 
-/* --- 7-1 專業核心特定排版 --- */
+/* --- 7-1 專業核心特定排版 (優化版) --- */
 .core-values {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 10px; /* 🚀 增加內距，防止文字貼邊 */
 }
 
 .value-item {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* 🚀 稍微拉大間距，讓視覺呼吸 */
     width: 100%;
 }
 
 .value-label {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* 🚀 稍微調降標題，平衡視覺壓力 */
     font-weight: bold;
     color: #fff;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* 增加與描述的距離 */
     display: block;
+    border-left: 3px solid #646cff; /* 💡 增加一個設計感的小側邊條 */
+    padding-left: 10px;
 }
 
 .value-desc {
-    font-size: 1rem;
-    color: #ccc;
-    line-height: 1.4;
+    font-size: 1.1rem; /* 🚀 從 1rem 調升到 1.1rem，讓字體變大 */
+    color: #e0e0e0;   /* 🚀 讓顏色亮一點（#ccc 偏暗），提高對比度 */
+    line-height: 1.6;  /* 🚀 調升行高，避免長句子擠成一團 */
+    letter-spacing: 0.5px; /* 增加字距，提升易讀性 */
 }
-
 /* --- 8-1 核心經驗佈局優化 --- */
 .work-history {
     padding-top: 100px !important; /* 避開標題 */
