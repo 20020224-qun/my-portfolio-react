@@ -166,7 +166,6 @@ function App() {
         </ul>
       </nav>
 
-      {/* 1. Home Section */}
       <section id="home" className="section">
         <div className="home-container scroll-reveal">
           <img src="/images/1.png" alt="Left" className="img-left" />
@@ -174,7 +173,6 @@ function App() {
         </div>
       </section>
 
-      {/* 2. About Section */}
       <section id="about" className="section">
         <div className="about-container scroll-reveal">
           <img src="/images/2-2.png" alt="About Left" className="about-img-left" />
@@ -182,7 +180,6 @@ function App() {
         </div>
       </section>
 
-      {/* 3. Resume Section */}
       <section id="resume" className="section">
         <div className="resume-container scroll-reveal">
           <ResumeCard 
@@ -227,7 +224,6 @@ function App() {
         </div>
       </section>
 
-      {/* 4. Portfolio Section */}
       <section id="portfolio" className="section">
         <div className="portfolio-header">
           <h2 className="section-title">PORTFOLIO</h2>
@@ -258,10 +254,9 @@ function App() {
         </div>
       </section>
 
-      {/* 5. Contact Section */}
       <section id="contact" className="section">
         <div className="contact-container scroll-reveal">
-          <div className="contact-visual">
+          <div className="contact-brand">
             <h2 className="contact-title">LET'S WORK<br />TOGETHER.</h2>
             <p className="contact-statement">
               專注於虛實整合與使用者經驗設計，<br />
@@ -269,7 +264,7 @@ function App() {
             </p>
           </div>
           
-          <div className="contact-info">
+          <div className="contact-details">
             <div className="info-item">
               <span className="info-label">EMAIL</span>
               <div className="email-row">
