@@ -297,4 +297,64 @@
     opacity: 0.15; /* 🚀 灰色透明感 */
     z-index: 0;
 }
+/* --- 7-1 專業核心：深度精修 --- */
+.card-back .core-values-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直置中 */
+    padding: 60px 80px;      /* 🚀 增加左右留白，讓大字更有呼吸感 */
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* 頂部大標題 */
+.core-values-content h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(100, 108, 255, 0.5);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.value-group {
+    margin-bottom: 40px;
+}
+
+/* 小標題：加上你的職人色飾條 */
+.value-group .value-label {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.value-group .value-label::before {
+    content: "";
+    width: 6px;
+    height: 1.5rem;
+    background: #646cff; /* 你的品牌紫色/藍色 */
+    margin-right: 15px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(100, 108, 255, 0.8);
+}
+
+/* 內文：大字清晰版 */
+.value-group .value-desc {
+    font-size: 1.25rem !important;
+    line-height: 1.8 !important;
+    color: #d1d1d1 !important;
+    padding-left: 21px; /* 與標題飾條對齊 */
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+}
 }
