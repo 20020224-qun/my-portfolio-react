@@ -1,4 +1,3 @@
-body { background-color: red !important; }
 /* ============================================================
    🖥️ 專屬電腦版樣式 (Desktop Only: 1024px 以上)
    ============================================================ */
@@ -712,5 +711,96 @@ html {
     to { opacity: 1; transform: scale(1); }
 }
 
+/* ==============================
+    5. 聯絡區塊 (回歸平衡版)
+============================== */
 
+/* 確保 ID 選擇器開頭，這能保證權重高於一般的 .section */
+#contact {
+    padding: 160px 10% !important;
+    background-color: #faf9f6 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+#contact .contact-container {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- 左側：妳原本最滿意的標題區 --- */
+#contact .contact-visual {
+    flex: 1.2;
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left !important;
+}
+
+#contact .contact-title {
+    font-size: clamp(3.2rem, 6vw, 4.2rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -3px !important;
+    color: #1a1a1a !important;
+    margin-bottom: 25px !important;
+}
+
+#contact .contact-statement {
+    font-size: 1.15rem !important;
+    color: #444 !important;
+    line-height: 1.8 !important;
+    max-width: 450px;
+}
+
+/* --- 右側：修正「小字失去平衡」的問題 --- */
+#contact .contact-info {
+    flex: 1;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px; /* 增加間距，讓右側看起來更大氣 */
+    border-left: 1px solid #dcd9d0;
+}
+
+/* 🚀 修正：提升藍色標籤的存在感，達成美感平衡 */
+#contact .info-label {
+    font-size: 1.1rem !important;  /* 從原本的小字提升到 1.1rem */
+    letter-spacing: 6px !important; /* 增加字間距，營造高級設計感 */
+    color: #535bf2 !important;     /* 稍微加深的藍色，視覺重量更重 */
+    font-weight: 800 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    text-transform: uppercase;
+}
+
+/* 🚀 修正：主要聯絡內容 (Email/Phone) */
+#contact .info-link, 
+#contact .info-text {
+    font-size: 2.1rem !important; /* 加大到 2.1rem，與左側標題呼應 */
+    color: #1a1a1a !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    text-decoration: none !important;
+}
+
+/* 輔助細節：確保 Copy 按鈕與文字對齊 */
+.email-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 手機版自動切換：防止擠壓 */
+@media (max-width: 992px) {
+    #contact .contact-container { flex-direction: column; }
+    #contact .contact-visual { padding-right: 0; margin-bottom: 60px; }
+    #contact .contact-info { padding-left: 0; border-left: none; border-top: 1px solid #dcd9d0; padding-top: 60px; }
+}
 }
