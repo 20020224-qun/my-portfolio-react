@@ -771,37 +771,39 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 45px;
-    border-left: 1px solid #dcd9d0; /* 分隔線 */
+    gap: 50px; /* 增加間距，讓右側看起來更舒展、更有分量 */
+    border-left: 1px solid #dcd9d0;
 }
 
-#contact .info-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    text-align: left !important;
-}
-
+/* 🚀 修正：提升藍色標籤的存在感 */
 #contact .info-label {
-    font-size: 2.2rem !important;
-    letter-spacing: 5px !important;
-    color: #646cff !important;
+    font-size: 0.95rem !important; /* 放大字級，不要讓它縮在那裡 */
+    letter-spacing: 6px !important; /* 更大的字間距營造高級感 */
+    color: #535bf2 !important; /* 稍微加深一點點藍色，增加對比度 */
     font-weight: 800 !important;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
-#contact .info-link, #contact .info-text {
-    font-size: 1.8rem !important;
+/* 🚀 修正：讓主要內容（Email/Phone）更有力道 */
+#contact .info-link, 
+#contact .info-text {
+    font-size: 1.9rem !important; /* 再次微調放大 */
     color: #1a1a1a !important;
-    text-decoration: none;
     font-weight: 700 !important;
-    display: inline-block;
+    line-height: 1.1;
 }
 
-#contact .copy-btn {
-    background: transparent;
-    border: 1px solid #dcd9d0;
-    color: #999;
-    padding: 3px 10px;
-    cursor: pointer;
+/* 修正左側：讓它不要過重蓋過右邊 */
+#contact .contact-title {
+    font-size: clamp(3rem, 5.5vw, 4.2rem) !important; /* 稍微縮小上限 */
+    letter-spacing: -2px !important; /* 不要太擠 */
+    margin-bottom: 25px !important;
+}
+
+#contact .contact-statement {
+    font-size: 1.15rem !important;
+    color: #444 !important; /* 文字顏色加深，增加左側下方的重量感來平衡大標 */
+    opacity: 0.9;
 }
 }
