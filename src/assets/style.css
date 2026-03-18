@@ -425,22 +425,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05); /* 淡淡的底色方塊 */
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    aspect-ratio: 1 / 1;      /* 確保是正方形 */
-    padding: 10px;
-    max-width: 80px;
+    aspect-ratio: 1 / 1;
+    
+    /* 🚀 關鍵修改：用百分比 Padding 強制圖片佔 75% */
+    padding: 12.5% !important; 
+    
+    max-width: 80px; /* 這裡維持你的大小限制 */
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    box-sizing: border-box; /* 確保 padding 不會撐大方格本體 */
 }
 
 /* 🚀 圖示本體 */
 .card-back .grid-item img {
-    width: 100%;               /* 不要撐太滿，留點呼吸感 */
+    width: 100%;    /* 撐滿 padding 剩下的 75% 空間 */
     height: 100%;
-    object-fit: contain;      /* 保持比例 */
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));   /* 稍微降飽和度，更有職人感 */
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
     transition: all 0.4s ease;
 }
 
