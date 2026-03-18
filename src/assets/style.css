@@ -806,4 +806,26 @@ html {
     color: #444 !important; /* 文字顏色加深，增加左側下方的重量感來平衡大標 */
     opacity: 0.9;
 }
+/* 將這段貼在 CSS 最底部 */
+#contact .contact-info * {
+    text-align: left !important;
+}
+
+/* 強制右側標籤變大變藍 */
+#contact .info-label {
+    font-size: 1.1rem !important; 
+    color: #535bf2 !important;
+    display: block !important;
+    letter-spacing: 5px !important;
+    font-weight: 800 !important;
+}
+
+/* 強制 Email 與電話變超大 */
+#contact .info-link, 
+#contact .info-text {
+    font-size: 2.2rem !important; /* 故意設超大來測試有沒有生效 */
+    color: #1a1a1a !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+}
 }
