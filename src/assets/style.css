@@ -712,12 +712,12 @@ html {
 }
 
 /* ==============================
-   5. 聯絡區塊 (溫暖米色版本)
+   5. 聯絡區塊 (溫暖米色版本 - 修正版)
 ============================== */
 
 #contact {
     padding: 140px 10% !important;
-    background-color: #faf9f6 !important; /* 溫暖米色底 */
+    background-color: #faf9f6 !important; /* 確保背景是米色 */
     color: #333333;
     min-height: 60vh;
     display: flex;
@@ -734,54 +734,55 @@ html {
     gap: 80px;
 }
 
-.contact-brand {
+/* 🚀 這裡修正：將 .contact-brand 改為 .contact-visual (對應你的 App.js) */
+.contact-visual {
     flex: 1.2;
+    text-align: left; /* 強制靠左 */
 }
 
 .contact-title {
-    font-size: 4.2rem;
+    font-size: clamp(3rem, 5vw, 4.2rem) !important; /* 使用響應式字體 */
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
-    color: #1a1a1a;
+    color: #1a1a1a !important; /* 確保是大標題深色 */
     margin-bottom: 30px;
-    text-align: left; /* 確保大標題靠左 */
+    margin-top: 0;
 }
 
 .contact-statement {
     font-size: 1.15rem;
-    color: #666;
+    color: #666 !important;
     line-height: 1.8;
-    text-align: left;
+    margin-top: 10px;
 }
 
-/* 右側聯絡細節樣式 */
-.contact-details {
+/* 右側聯絡細節 */
+.contact-info {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 50px;
     padding-left: 60px;
-    border-left: 1px solid #e0ddd5; /* 暖灰分隔線 */
+    border-left: 1px solid #e0ddd5;
 }
 
 .info-item {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    text-align: left;
 }
 
 .info-label {
     font-size: 0.8rem;
     letter-spacing: 4px;
-    color: #646cff;
+    color: #646cff !important;
     font-weight: 800;
 }
 
 .info-link, .info-text {
     font-size: 1.5rem;
-    color: #222;
+    color: #222 !important;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -789,7 +790,7 @@ html {
 }
 
 .info-link:hover {
-    color: #646cff;
+    color: #646cff !important;
     transform: translateX(8px);
 }
 
@@ -808,27 +809,24 @@ html {
     font-size: 0.65rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
 .copy-btn.copied {
     background: #646cff;
     color: white;
-    border-color: #646cff;
 }
 
 /* 手機版適應 */
 @media (max-width: 992px) {
     .contact-container {
         flex-direction: column;
-        gap: 60px;
+        gap: 50px;
     }
-    .contact-details {
+    .contact-info {
         padding-left: 0;
         border-left: none;
         border-top: 1px solid #e0ddd5;
         padding-top: 40px;
     }
-    .contact-title { font-size: 3rem; }
 }
 }
