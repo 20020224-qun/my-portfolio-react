@@ -320,7 +320,7 @@ function App() {
             <div className="info-item">
               <span className="info-label">RESUME</span>
               <a 
-                href="Daisy_Resume.pdf" 
+                href="/Daisy_Resume.pdf" 
                 download="黃亮裙_履歷.pdf"
                 className="info-link download-link"
               >
