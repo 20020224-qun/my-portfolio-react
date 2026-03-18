@@ -383,7 +383,7 @@
 
 /* 🚀 圖片本體：增加職人質感 */
 .card-back .full-res-img {
-    width: 90%;        /* 寬度佔 90%，留一點邊框感 */
+    width: 100%;        /* 寬度佔 90%，留一點邊框感 */
     height: auto;
     max-height: 400px; /* 限制最大高度，防止把卡片撐爆 */
     object-fit: contain;
