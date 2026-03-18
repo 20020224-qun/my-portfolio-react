@@ -222,37 +222,25 @@
     gap: 30px; 
     width: 95%;
     max-width: 1400px;
-    height: 650px; /* 稍微加高一點，內容更舒服 */
+    height: 650px; 
     margin: 0 auto;
-
 }
 
 .card {
-    /* 🚀 初始狀態：三張卡片均分空間 */
     flex: 1; 
     height: 100%;
-    
-    /* 🚀 關鍵 1：設定最小寬度，防止被擠到「極致」 */
     min-width: 150px; 
-    
-    /* 🚀 關鍵 2：取消原本死板的 max-width 400px */
-    /* 改用 flex-basis 來控製初始大小感 */
     flex-basis: 300px; 
-    
     perspective: 1500px;
     cursor: pointer;
     transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 🚀 當其中一張卡片被點擊 (Active) 時 */
 .card.active-card {
-    /* 🚀 關鍵 3：展開比例稍微調降到 2.5 或 3，讓旁邊有生存空間 */
     flex: 3; 
-    
-    /* 🚀 關鍵 4：給展開後的卡片一個合理的寬度範圍 */
     min-width: 600px; 
     max-width: 900px; 
-    z-index: 10; /* 確保陰影在最上層 */
+    z-index: 10;
 }
 
 .card-inner {
@@ -274,17 +262,15 @@
     backface-visibility: hidden;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.1); /* 柔和的高級感陰影 */
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
 }
 
-/* 統一卡面圖片縮放邏輯 */
 .card-front img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 🚀 確保 7-1, 8-1, 9-1 都能填滿格子 */
+    object-fit: cover;
 }
 
-/* 統一卡背設定 */
 .card-back {
     background-color: #2d3436;
     transform: rotateY(180deg);
@@ -298,79 +284,63 @@
     background-image: url('/images/7-2.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* 🚀 灰色透明感 */
+    opacity: 0.15;
     z-index: 0;
 }
-/* --- 7-1 專業核心：深度精修 (強制執行版) --- */
-
-/* 1. 確保內容容器層級最高，且顏色不受父層干擾 */
-.card-back .core-values {
-    position: relative;
-    z-index: 10 !important; /* 🚀 提到最高，確保在背景圖之上 */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 80px;
-    box-sizing: border-box;
-    text-align: left;
-    background: transparent !important; /* 確保沒有背景色遮擋 */
-}
-
 
 /* ==============================
-   卡背標題統一：靠右、顯色、高級感
+   卡背內容：強制對齊與顯色
 ============================== */
 
-/* 🚀 統一 7-1, 8-1, 9-1 的容器行為 */
+/* 🚀 1. 統一所有卡背容器：強制頂部對齊 */
 .card-back .core-values,
 .card-back .experience-content,
 .card-back .skills-content {
+    position: relative;
+    z-index: 10 !important;
+    width: 100%;
+    height: 100%;
     display: flex !important;
     flex-direction: column !important;
-    /* 🚀 關鍵：從頂部開始排，不要置中 */
+    /* 這裡絕對要用 flex-start 才能讓標題對齊頂部 */
     justify-content: flex-start !important; 
-    /* 🚀 統一 Padding，這決定了標題距離卡片頂部的基礎高度 */
-    padding: 60px 80px !important;         
-    height: 100%;
+    padding: 60px 80px !important;
     box-sizing: border-box;
+    text-align: left;
+    background: transparent !important;
 }
 
+/* 🚀 2. 統一標題位置 (h3) */
 .card-back h3 {
-    /* 🚀 靠左對齊核心邏輯 */
     display: block !important;
     width: fit-content !important; 
     
-    /* 🚀 關鍵修改：讓右邊自動推開，左邊固定距離 */
-    margin-left: 60px !important;   /* 🚀 距離左邊界 60px (數字越大越往右) */
-    margin-right: auto !important;  /* 🚀 把右邊空間全部推開 */
+    /* 靠左對齊距離 */
+    margin-left: 0px !important;   /* 如果要更靠左可以設為 0 */
+    margin-right: auto !important; 
     
-    /* 🚀 視覺格式 */
-    margin-top: 50px !important;    /* 距離頂部一點距離 */
+    /* 關鍵：統一頂部間距 */
+    margin-top: 0px !important; 
     margin-bottom: 40px !important;
+    padding-bottom: 8px;
     
-    
-    color: #ffffff !important;      /* 純白顯色 */
+    color: #ffffff !important;
     font-size: 2.2rem !important;
     font-weight: 800 !important;
     letter-spacing: 5px !important;
     text-transform: uppercase;
-    
-    /* 🚀 職人感底線 */
     border-bottom: 3px solid #646cff !important;
     
-    /* 確保在最前方 */
     position: relative;
     z-index: 20;
 }
 
-/* 3. 小標題飾條與顏色 */
+/* 🚀 3. 小標題飾條 (7-1) */
 .card-back .value-group .value-label {
     font-size: 1.5rem !important;
     font-weight: 700 !important;
-    color: #ffffff !important; /* 🚀 強制白色 */
-    margin-bottom: -5px !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
     display: flex;
     align-items: center;
 }
@@ -379,20 +349,20 @@
     content: "";
     width: 6px;
     height: 1.5rem;
-    background-color: #646cff !important; /* 🚀 強制品牌藍 */
+    background-color: #646cff !important;
     margin-right: 15px;
     border-radius: 3px;
     box-shadow: 0 0 12px rgba(100, 108, 255, 0.9);
     flex-shrink: 0;
 }
 
-/* 4. 內文明度提升 */
+/* 🚀 4. 內文格式 (7-1) */
 .card-back .value-group .value-desc {
-    font-size: 1.25rem !important;
-    line-height: 1.8 !important;
-    color: #f0f0f0 !important; /* 🚀 使用接近白的淺灰，提升對比度 */
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    color: #f0f0f0 !important;
     padding-left: 21px !important;
+    margin-bottom: 25px !important;
     font-weight: 400 !important;
-    letter-spacing: 0.05rem !important;
 }
 }
