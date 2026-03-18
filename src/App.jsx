@@ -187,6 +187,7 @@ function App() {
       <section id="resume" className="section">
         <div className="resume-container scroll-reveal">
           <ResumeCard frontImg="/images/7-1.png" isFlipped={activeResumeIndex === 0} onFlip={() => setActiveResumeIndex(activeResumeIndex === 0 ? null : 0)}>
+          <div className="core-values"></div>
             <h3>專業核心</h3>
             <div className="core-values">
               <div className="value-group"><p className="value-label">虛實整合能力</p><p className="value-desc">精準掌握 3D 建模與列印流程，確保設計完美落地。</p></div>
