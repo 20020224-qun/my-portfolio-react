@@ -319,7 +319,7 @@
 }
 
 /* 2. 標題靠右並強制顯色 */
-.card-back .core-values h3 {
+.core-values h3 {
     /* 🚀 位置控制 */
     display: block !important; 
     width: fit-content;        /* 讓寬度隨文字長度調整 */
