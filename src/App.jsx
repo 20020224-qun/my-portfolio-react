@@ -256,15 +256,19 @@ function App() {
 
       <section id="contact" className="section">
         <div className="contact-container scroll-reveal">
-          <div className="contact-brand">
+          {/* 左側：品牌標題區 */}
+          <div className="contact-visual">
             <h2 className="contact-title">LET'S WORK<br />TOGETHER.</h2>
             <p className="contact-statement">
               專注於虛實整合與使用者經驗設計，<br />
               透過美感與邏輯解決複雜的問題。
             </p>
           </div>
-          
-          <div className="contact-details">
+
+          {/* 中間的分隔線會透過 CSS 產生 */}
+
+          {/* 右側：一眼就能看清的聯絡重點 */}
+          <div className="contact-info">
             <div className="info-item">
               <span className="info-label">EMAIL</span>
               <div className="email-row">
