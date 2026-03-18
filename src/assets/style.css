@@ -332,11 +332,19 @@ body {
     border-radius: 2px;
 }
 
-.resume-info .core-values .value-item .value-desc {
-    font-size: 1.8rem !important; /* 🚀 暫時開到最大，確認它會動 */
+.resume-info .core-values .value-item .value-label {
+    font-size: 1.4rem !important; /* 🚀 標題稍微再大一點，穩住重心 */
+    font-weight: 800 !important;
     color: #ffffff !important;
-    line-height: 1.8 !important;
-    display: block !important;
+    margin-bottom: 12px !important; /* 增加與描述的距離 */
+}
+
+.resume-info .core-values .value-item .value-desc {
+    font-size: 1.25rem !important; /* 🚀 內文縮到 1.25，比原本大但比標題小 */
+    color: #e0e0e0 !important;
+    line-height: 1.8 !important;   /* 🚀 保持高行高，這是易讀性的靈魂 */
+    font-weight: 400 !important;
+    letter-spacing: 0.05rem !important;
 }
 /* --- 8-1 核心經驗佈局優化 --- */
 .work-history {
