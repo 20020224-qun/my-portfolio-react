@@ -205,11 +205,13 @@
    3. 簡歷區塊：橫向置中與尺寸統一
 ============================== */
 #resume {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
-    justify-content: center; /* 🚀 確保整個容器在網頁水平置中 */
+    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 100px 0;
     background-color: #f3f3f3;
 }
 
@@ -302,7 +304,7 @@
 /* --- 7-1 專業核心：深度精修 --- */
 .card-back .core-values {
     position: relative;
-    z-index: 2;
+    z-index: 5;
     width: 100%;
     height: 100%;
     display: flex;
@@ -313,29 +315,34 @@
     text-align: left;
 }
 
-/* 頂部大標題 */
+/* 🚀 頂部大標題：維持水平，但靠右移動 */
 .core-values h3 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: 5px;
-    margin-bottom: 50px;
-    color: #fff;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 5px !important;
+    margin-bottom: 50px !important;
+    
+    /* 🚀 關鍵：讓標題靠右移動一點點 (調整 20px 這個數值來到達你要的位置) */
+    margin-left: 40px; 
+    
+    color: #ffffff !important; /* 🚀 強制白色 */
     text-transform: uppercase;
-    border-bottom: 2px solid rgba(100, 108, 255, 0.5);
+    border-bottom: 3px solid #646cff !important; /* 🚀 顏色亮一點 */
     display: inline-block;
     padding-bottom: 10px;
 }
 
 .value-group {
     margin-bottom: 40px;
+    width: 100%;
 }
 
-/* 小標題：加上你的職人色飾條 */
+/* 小標題：職人色飾條 */
 .value-group .value-label {
     font-size: 1.5rem !important;
     font-weight: 700 !important;
-    color: #ffffff !important;
-    margin-bottom: 12px;
+    color: #ffffff !important; /* 🚀 強制白色 */
+    margin-bottom: 12px !important;
     display: flex;
     align-items: center;
 }
@@ -344,19 +351,21 @@
     content: "";
     width: 6px;
     height: 1.5rem;
-    background: #646cff; /* 你的品牌紫色/藍色 */
+    background: #646cff !important; /* 🚀 確保品牌色顯示 */
     margin-right: 15px;
     border-radius: 3px;
-    box-shadow: 0 0 10px rgba(100, 108, 255, 0.8);
+    box-shadow: 0 0 12px rgba(100, 108, 255, 0.9);
+    flex-shrink: 0;
 }
 
 /* 內文：大字清晰版 */
 .value-group .value-desc {
     font-size: 1.25rem !important;
     line-height: 1.8 !important;
-    color: #d1d1d1 !important;
-    padding-left: 21px; /* 與標題飾條對齊 */
-    font-weight: 400;
-    letter-spacing: 0.03rem;
+    color: #e0e0e0 !important; /* 🚀 調整為亮灰色，增加閱讀對比 */
+    padding-left: 21px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.05rem !important;
+    display: block !important;
 }
 }
