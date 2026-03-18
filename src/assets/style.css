@@ -757,20 +757,118 @@ html {
     max-width: 500px;
 }
 
-/* 聯絡區塊：電腦版兩欄排版 */
+/* ==============================
+   5. 聯絡區塊 (輕盈灰白版本)
+============================== */
+
 #contact {
     padding: 120px 8% !important;
-    background-color: #0f0f0f;
-    color: #ffffff;
-    min-height: 80vh;
+    background-color: #f8f9fa; /* 🚀 換成極淺灰色，不再是深黑 */
+    color: #2d3436;           /* 文字改回深色 */
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
 }
 
 .contact-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1400px;
+    align-items: center;      /* 讓兩欄垂直置中對齊 */
+    max-width: 1200px;
     margin: 0 auto;
-    gap: 80px;
+    width: 100%;
+    gap: 100px;               /* 增加兩欄之間的呼吸感 */
+}
+
+/* 🚀 左側：標題區 */
+.contact-visual {
+    flex: 1;
+}
+
+.contact-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 850;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+    /* 取消漸層，改用乾淨的深色 */
+}
+
+.contact-statement {
+    font-size: 1.1rem;
+    color: #636e72;
+    line-height: 1.8;
+    max-width: 450px;
+}
+
+/* 🚀 右側：聯絡清單 */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 50px;
+    border-left: 1px solid #dfe6e9; /* 加上一條細細的分隔線增加高級感 */
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: #646cff; /* 保持你的品牌藍 */
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.info-link, .info-text {
+    font-size: 1.4rem;
+    color: #2d3436;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.info-link:hover {
+    color: #646cff;
+    transform: translateX(5px);
+}
+
+/* Email 複製按鈕調整 */
+.copy-btn {
+    background: #ffffff;
+    border: 1px solid #dfe6e9;
+    color: #636e72;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    border-color: #646cff;
+    color: #646cff;
+}
+
+/* 📱 手機版：自動變回上下堆疊 */
+@media (max-width: 992px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 50px;
+        align-items: flex-start;
+    }
+    .contact-info {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #dfe6e9;
+        padding-top: 40px;
+        width: 100%;
+    }
 }
 }
