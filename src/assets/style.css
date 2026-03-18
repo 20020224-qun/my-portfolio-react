@@ -427,7 +427,7 @@
     background: rgba(255, 255, 255, 0.05); /* 淡淡的底色方塊 */
     border-radius: 12px;
     aspect-ratio: 1.1 / 1;      /* 確保是正方形 */
-    padding: -5px;
+    padding: -20px;
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
