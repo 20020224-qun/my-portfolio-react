@@ -1,0 +1,1112 @@
+/* ==============================
+   1. 基礎設定與導覽列
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* 統一高度 */
+    background-color: #ffffff;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo img { height: 150px; cursor: pointer; }
+
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 30px; }
+.nav-links a { text-decoration: none; color: #333; font-weight: bold; }
+
+/* ==============================
+   1. 首頁區塊調整 (左右圖同步加大 + 對開滑入)
+============================== */
+
+.home-container {
+  background-color: #f3f3f3;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* 確保圖片滑入前不會撐開寬度 */
+}
+
+/* 左圖：加大，偏左上方 */
+.img-left {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  width: 700px;     /* 加大 */
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(-150px); /* 初始位置更偏左 */
+}
+
+/* 右圖：加大，偏右下方 */
+.img-right {
+  position: absolute;
+  right: 15%;         /* 往右邊靠一點 */
+  bottom: 10%;
+  width: 650px;      /* 從 400px 加大到 600px */
+  z-index: 2;        /* 疊在左圖上方 */
+  opacity: 0;
+  transform: translateX(150px); /* 初始位置更偏右 */
+  filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.15));
+}
+
+/* --- 動態進場觸發 --- */
+
+/* 左圖進場 */
+.scroll-reveal.active .img-left {
+    animation: slideFadeInLeft 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 右圖進場：設定稍微延遲 0.2s，增加層次感 */
+.scroll-reveal.active .img-right {
+    animation: slideFadeInRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.1s; 
+}
+
+/* --- 定義動畫路徑 --- */
+
+/* 從左側淡入滑向中間偏左 */
+@keyframes slideFadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 從右側淡入滑向中間偏右 */
+@keyframes slideFadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==============================
+   2. 關於區塊調整 (左右圖加大 + 對開滑入)
+============================== */
+
+.about-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 保持與首頁一致的高度感 */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 關於我 - 左圖 (2-2.png)：加大，偏左上方 */
+.about-img-left {
+  position: absolute;
+  left: 20%;         /* 稍微往中間靠一點點，增加集中感 */
+  top: 45%;
+  width: 500px;     /* 加大 */
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(-150px);
+}
+
+/* 關於我 - 右圖 (2.png)：加大，偏右下方 */
+.about-img-right {
+  position: absolute;
+  right: 20%;
+  bottom: 15%;
+  width: 400px;     /* 加大 */
+  z-index: 2;        /* 疊在上方 */
+  opacity: 0;
+  transform: translateX(150px);
+  filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.1));
+}
+
+/* --- 關於區塊進場觸發 --- */
+
+/* 關於我左圖進場 */
+.scroll-reveal.active .about-img-left {
+    animation: slideFadeInLeft 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 關於我右圖進場：延遲 0.25s */
+.scroll-reveal.active .about-img-right {
+    animation: slideFadeInRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.25s; 
+}
+
+/* 動畫路徑 slideFadeInLeft 與 slideFadeInRight 會延用首頁定義好的 Keyframes */
+/* ==============================
+   3. 簡歷區塊基礎 (7-1, 8-1, 9-1)
+============================== */
+#resume {
+    background-color: #f3f3f3;
+    min-height: 100vh; /* 確保整個 Section 至少有一個螢幕高 */
+    display: flex;
+    align-items: center;
+}
+.resume-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: 500px; 
+    margin: 0 auto;
+}
+
+.card {
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    perspective: 1000px; 
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card.active-card { flex: 3; }
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card.active-card .card-inner { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* 強制確保簡歷圖片不受外部動畫預設隱藏影響 */
+.card-front img {
+    opacity: 1 !important; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- 1. 定義流動漸變動畫 --- */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- 2. 升級後的卡背樣式 --- */
+.card-back {
+    /* 這裡使用多層漸變，營造層次感 */
+    background: linear-gradient(-45deg, #1a1a1a, #2c3e50, #1e272e, #2f3542);
+    background-size: 400% 400%; /* 放大背景以便動畫移動 */
+    animation: gradientBG 15s ease infinite; /* 緩慢流動感 */
+    
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+/* --- 3. 動態底紋 (保留 7-2.jpg 但加入呼吸感) --- */
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(10deg);
+    width: 120%;
+    height: 120%;
+    background-image: url('/images/7-2.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    filter: brightness(1.2); /* 幾乎不糊，展現你的 3D 線條細節 */
+    z-index: 0;
+    
+    /* 讓底紋有輕微的呼吸跳動感 */
+    animation: pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: translate(-50%, -50%) rotate(10deg) scale(1); }
+    to { transform: translate(-50%, -50%) rotate(12deg) scale(1.05); }
+}
+
+/* --- 4. 融合標題樣式 (消除割裂感) --- */
+.resume-info h3 {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    font-size: 1.7rem;
+    color: #fff; /* 改回白色，但利用下方的發光飾線來點綴 */
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    z-index: 2;
+}
+
+/* 標題下方的彩色發光線 */
+.resume-info h3::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5); /* 漸變飾線 */
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+/* --- 7-1 專業核心特定排版 --- */
+.core-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.value-item {
+    text-align: left;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.value-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.value-desc {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+/* --- 8-1 核心經驗佈局優化 --- */
+.work-history {
+    padding-top: 100px !important; /* 避開標題 */
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.tree-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px; /* 拉開左右軌間距 */
+    margin-top: 20px;
+}
+
+/* 左軌：獨立接案 */
+.side-track {
+    width: 40%;
+    border-left: 4px solid rgba(0, 123, 255, 0.4);
+    padding-left: 20px;
+}
+
+.side-job {
+    font-size: 1.1rem; /* 放大字體 */
+    font-weight: 800;
+    color: #5fb2ff;
+    margin: 8px 0;
+}
+
+/* 右軌：主要發展路徑 */
+.main-track {
+    width: 60%;
+    border-left: 3px solid #007bff;
+    padding-left: 25px;
+    position: relative;
+}
+
+.tree-item {
+    position: relative;
+    margin-bottom: 25px; /* 增加上下間距，讓文字呼吸 */
+}
+
+/* 卡片 2 圖片專用樣式 */
+.experience-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px 20px 20px; /* 避開標題 */
+}
+
+.full-res-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 技能專長文字樣式整理 */
+.skill-list-container {
+    margin-top: 80px; 
+    text-align: left; 
+    padding: 0 35px;
+}
+.skill-category { color: #66b2ff; font-weight: bold; font-size: 1.1rem; }
+.skill-items { font-size: 0.95rem; color: #ccc; }
+
+/* ==============================
+   9-1 技能專長：最終無縫版 (消滅所有間距)
+============================== */
+
+.skills-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;                /* 網格間距為 0 */
+    
+    /* 1. 關鍵：移除所有左右 Padding，讓網格貼到最邊緣 */
+    padding: 90px 0 0 0;  /* 只留上方空間給標題 */
+    
+    width: 100%;
+    height: 100%;          /* 強制撐滿整張卡片高度 */
+    box-sizing: border-box;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;      /* 靜態時切齊邊緣 */
+    background: transparent; 
+    margin: 0;
+    padding: 0;
+}
+
+.grid-item img {
+    /* 2. 關鍵：使用 100% 寬高配合 object-fit: cover */
+    /* 這會讓圖片像地磚一樣鋪滿格子，完全不留縫隙 */
+    width: 90%;           
+    height: 90%;
+    object-fit: cover;     
+    
+    display: block;
+    transition: transform 0.3s ease-out;
+}
+
+/* --- 滑鼠懸停：突破邊界放大 --- */
+.grid-item:hover {
+    overflow: visible;     /* 放大時允許圖片溢出格子，這才會有放大效果 */
+    z-index: 30;
+}
+
+.grid-item:hover img {
+    transform: scale(1.2); /* 放大 1.2 倍 */
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+}
+
+/* ==============================
+   作品集區塊：淺色背景版 (#F8F9FA)
+============================== */
+#portfolio { 
+    background-color: #F8F9FA; 
+    padding: 100px 0; 
+}
+
+.section-title { 
+    color: #333333;             /* 淺色底配深灰標題 */
+    font-size: 2.5rem; 
+    font-weight: 200; 
+    letter-spacing: 8px; 
+    text-align: center; 
+    margin-bottom: 50px; 
+    text-transform: uppercase; 
+}
+
+.filter-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+
+.filter-btn { 
+    background: #FFFFFF;        /* 白色按鈕 */
+    color: #666666;             /* 灰色文字 */
+    border: 1px solid #DDDDDD; 
+    padding: 10px 25px; 
+    cursor: pointer; 
+    transition: all 0.3s; 
+    border-radius: 2px; 
+}
+
+.filter-btn:hover { 
+    color: #333; 
+    border-color: #999999; 
+    background: #F0F0F0;
+}
+
+.filter-btn.active { 
+    background: #333333;        /* 選中後變黑底白字 */
+    color: #FFFFFF; 
+    border-color: #333333; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    transform: translateY(-2px); 
+}
+
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; width: 90%; margin: 0 auto; }
+
+.portfolio-item { 
+    position: relative; 
+    aspect-ratio: 4/3; 
+    background: #EEEEEE;        /* 預載入背景色 */
+    overflow: hidden; 
+    cursor: pointer; 
+    border-radius: 4px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* 輕微陰影增加層次 */
+}
+
+.portfolio-item img, .portfolio-item video { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.portfolio-item:hover img { transform: scale(1.05); }
+
+.item-overlay { 
+    position: absolute; inset: 0; 
+    background: rgba(255, 255, 255, 0.8); /* 淺色懸浮層 */
+    display: flex; justify-content: center; align-items: center; 
+    opacity: 0; transition: 0.3s; 
+    color: #333333;             /* 懸浮字體變深色 */
+    font-weight: bold;
+    letter-spacing: 2px; 
+}
+
+.portfolio-item:hover .item-overlay { opacity: 1; }
+
+/* Lightbox & Nav (保持深色以專注看圖) */
+.lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.lightbox-content { position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; }
+.lightbox-media { max-width: 100%; max-height: 85vh; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+.close-btn { position: absolute; top: -50px; right: 0; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; }
+.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: #fff; border: none; font-size: 30px; padding: 20px; cursor: pointer; transition: 0.3s; }
+.nav-btn:hover { background: rgba(255,255,255,0.3); }
+.prev-btn { left: -80px; } .next-btn { right: -80px; }
+
+@media (max-width: 768px) { 
+    .prev-btn { left: 10px; } 
+    .next-btn { right: 10px; } 
+    .nav-btn { padding: 10px; } 
+}
+
+/* ==============================
+   聯絡區塊：極簡職人風 (UX 優化)
+============================== */
+#contact {
+    background-color: #ffffff;
+    padding: 250px 0;
+    min-height: 90vh; /* 調整高度，收尾更漂亮 */
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 左側：大視覺標題 */
+.contact-visual {
+    flex: 1.5;
+}
+
+.contact-title {
+    font-size: 5rem;
+    font-weight: 200;
+    line-height: 1.1;
+    color: #1a1a1a;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+}
+
+.contact-statement {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+/* 右側：聯絡清單 */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* 拉開間距，更像精品網頁 */
+    padding-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: #B2B2B2;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+/* 互動行 (Email & Copy) */
+.email-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-link, .info-text {
+    font-size: 1.3rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.info-link:hover {
+    color: #007bff;
+}
+
+/* 實體下劃線效果 (針對下載連結) */
+.download-link {
+    position: relative;
+    width: fit-content;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #333; /* 實體下劃線 */
+}
+
+.download-link:hover {
+    border-bottom-color: #007bff;
+}
+
+/* 複製按鈕樣式 */
+.copy-btn {
+    background: #f4f4f4;
+    border: 1px solid #eee;
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.copy-btn:hover {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.copy-btn.copied {
+    background: #28a745; /* 成功後的綠色 */
+    color: #fff;
+    border-color: #28a745;
+}
+
+/* 響應式：手機版改為上下堆疊 */
+@media (max-width: 992px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 60px;
+        padding-bottom: 50px;
+    }
+    .contact-title {
+        font-size: 3.5rem;
+    }
+    .email-row {
+        flex-wrap: wrap;
+    }
+}
+
+/* ==============================
+   5. 響應式設計 (Responsive)
+============================== */
+
+/* =================================================
+   iPad Air 專屬優化 (寬度範圍包含直式與橫式)
+   ================================================= */
+
+/* --- 1. iPad 橫式 (Landscape) --- */
+@media screen and (min-width: 821px) and (max-width: 1180px) and (orientation: landscape) {
+    /* 首頁 & 關於我：恢復並排但縮小 */
+    .img-left, .about-img-left {
+        width: 500px;
+        left: 5%;
+        top: 15%;
+    }
+    .img-right, .about-img-right {
+        width: 450px;
+        right: 5%;
+        bottom: 10%;
+    }
+
+    /* 簡歷卡片：3 張並排 + 增加間距 */
+    .resume-container {
+        gap: 40px; 
+        max-width: 95%;
+        height: 550px;
+    }
+
+    /* 作品集：3-4 欄 */
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+}
+
+/* --- 2. iPad 直式 (Portrait) 專屬：交錯排版 --- */
+@media screen and (max-width: 820px) and (orientation: portrait) {
+    .home-container, .about-container {
+        display: flex;
+        flex-direction: column; /* 垂直堆疊 */
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        padding-top: 80px;
+    }
+
+    /* --- 首頁：右圖在上，左圖在下 --- */
+    #home .home-container {
+        flex-direction: column; /* 預設順序：右圖 HTML 若在後，會變在下，所以我們要用 order */
+    }
+    #home .img-right { order: 1;  z-index: 2; }
+    #home .img-left { order: 2; z-index: 1; }
+
+    /* --- 關於我：左圖在上，右圖在下 --- */
+    #about .about-container {
+        flex-direction: column; 
+    }
+    #about .about-img-left { order: 1; z-index: 2; }
+    #about .about-img-right { order: 2; z-index: 1; }
+
+    /* --- 通用圖片樣式調整 (iPad 直式) --- */
+    .img-right, .about-img-right, .img-left, .about-img-left {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: 80%;      /* 寬度適中 */
+        max-width: 500px;
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    /* 確保上面的圖壓在下面的圖上，增加陰影層次感 */
+    .img-right, .about-img-left {
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+    }
+
+    /* 觸發動畫 */
+    .scroll-reveal.active .img-right, 
+    .scroll-reveal.active .about-img-right,
+    .scroll-reveal.active .img-left, 
+    .scroll-reveal.active .about-img-left {
+        animation: slideFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+}
+
+/* --- 3. 補充：垂直滑入動畫 (用於直式平板) --- */
+@keyframes slideFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =================================================
+   手機版專屬優化 (iPhone / Android)
+   ================================================= */
+
+/* --- 手機橫式專屬 (高度通常很窄) --- */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .home-container, .about-container {
+        flex-direction: row; 
+        height: 120vh;       
+        padding: 60px 5%;
+    }
+
+    .img-left, .about-img-left {
+        width: 350px;
+        left: 5%;
+        top: 20%;
+    }
+    .img-right, .about-img-right {
+        width: 350px;
+        right: 5%;
+        bottom: 5%;
+    }
+
+    .resume-container {
+        flex-direction: row; 
+        height: 350px;       
+        gap: 15px;
+    }
+    .card {
+        height: 100% !important;
+    }
+    .card.active-card {
+        flex: 2 !important; /* 修正：設定展開比例 */
+    }
+    
+    .resume-info h3 {
+        top: 25px;
+        left: 25px;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+    }
+    
+    .resume-info h3::after {
+        height: 2px;
+        margin-top: 5px;
+    }
+
+    .value-label { font-size: 1rem; }
+    .value-desc { font-size: 0.85rem; line-height: 1.8; }
+
+    .work-history { padding-top: 55px !important; padding-left: 20px; }
+    .side-job { font-size: 0.7rem; }
+    .skill-category { font-size: 0.75rem; }
+    .skill-items { font-size: 0.65rem; }
+
+    .skills-grid-container { padding: 50px 0 0 0; }
+    .grid-item img { width: 70%; height: 70%; }
+}
+
+/* --- 手機直式專屬 (Portrait) --- */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    
+    /* 1. Navbar 本體：核心釘死在頂部 */
+    .navbar {
+        position: fixed !important; /* 不管怎麼滑，絕對不動 */
+        transform: translate3d(0, 0, 0) !important;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        background: #ffffff !important; 
+        z-index: 9999 !important; /* 確保在最前方，不被作品集圖片蓋過 */
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 增加陰影，讓固定感更明顯 */
+        
+        /* 💡 這是關鍵：防止手機瀏覽器在捲動時發生位移震盪 */
+        transform: translateZ(0); 
+    }
+
+    /* 2. 內容推擠：防止內容鑽到 Navbar 下面 */
+    #home {
+        padding-top: 70px !important;
+        margin-top: 0 !important;
+    }
+
+    /* 3. Logo 設定 */
+    .logo {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 100px !important; /* 稍微縮小，視覺上比較精緻 */
+        width: auto;
+        max-width: 180px;
+        object-fit: contain;
+    }
+
+    /* 4. 漢堡選單：固定在右邊 */
+    .hamburger-container {
+        flex-shrink: 0;
+        width: 45px;
+        height: 45px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+    }
+
+    /* 5. 下拉選單：修正位置，確保它跟著 Navbar 走 */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        
+        position: fixed !important; /* 必須也是 fixed */
+        left: 0 !important;
+        top: 70px !important; /* 緊貼 Navbar 底部 */
+        width: 100vw !important;
+        background: #f8f7f5;
+        
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: max-height 0.5s ease-in-out, visibility 0.5s;
+        z-index: 9998;
+        padding: 0 40px;
+        list-style: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        box-sizing: border-box;
+    }
+
+    .nav-links.show {
+        max-height: 500px;
+        visibility: visible;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    /* 修正選單內連結的間距 */
+    .nav-links li {
+        width: 100%;
+        margin: 12px 0;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.show li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 1. 容器保持縱向排列 */
+    .resume-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        padding: 20px 0 !important;
+    }
+
+    /* 2. 調整單張卡片通用寬度與比例 */
+    .card {
+        width: 85% !important;
+        max-width: 300px !important;
+        aspect-ratio: 4 / 3.5 !important;
+        margin: 0 auto !important;
+    }
+    
+
+    /* 3. 卡背通用佈局：讓標題全部靠頂，內容可以自由發揮 */
+    .card-back {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* 💡 重要：所有標題都從頂部開始 */
+        padding: 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 所有卡片的標題 h3 保持一致的位置與大小 */
+    .resume-info h3 {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1rem;
+      color: #fff; /* 改回白色，但利用下方的發光飾線來點綴 */
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      z-index: 2;
+      }
+    }
+
+    /* 4. 🚀 專屬第一張卡片：專業核心的內容「往下掉」 */
+    .resume-container .card:nth-of-type(1) .core-values {
+        margin-top: auto !important; /* 💡 彈簧效果：把內容推到最下面 */
+        margin-bottom: 5px !important; /* 離底部的距離 */
+        padding-top: 70px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+    }
+
+    /* 第一張卡片的文字細節調整 */
+    .resume-container .card:nth-of-type(1) .value-item {
+        line-height: 1.1 !important;
+    }
+
+    .value-label {
+        font-size: 0.75rem !important;
+        font-weight: bold;
+        color: #e6e6e6;
+        margin-bottom: 1px !important;
+        text-align: left;
+    }
+
+    .value-desc {
+        font-size: 0.6rem !important;
+        color: #cfcfcf;
+        margin: 0 !important;
+        text-align: left;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* --- 5. 第二張卡片 (核心經驗圖) 強化版 --- */
+    
+    /* 容器設定：取消內距限制，讓圖片有空間長大 */
+    .resume-container .card:nth-of-type(2) .card-back {
+        padding: 0 !important; /* 💡 取消 padding，讓圖片能貼邊 */
+        justify-content: flex-start !important;
+        overflow: hidden;
+    }
+
+    .resume-container .card:nth-of-type(2) .experience-image-container {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        /* 💡 這裡控制圖片整體的位移，-10px 讓它往上提 */
+        transform: translateY(-50px); 
+        display: flex;
+        align-items: center; /* 垂直置中 */
+        justify-content: center;
+    }
+
+    .resume-container .card:nth-of-type(2) .full-res-img {
+        /* 🚀 讓圖片在大：寬度撐滿，高度自動 */
+        width: 100% !important; 
+        height: auto !important;
+        max-height: 95% !important; /* 稍微留一點點呼吸空間 */
+        object-fit: cover !important; /* 💡 如果想填滿改 cover，想看全圖改 contain */
+        
+        /* 讓圖片呈現得更乾淨 */
+        border-radius: 0 0 15px 15px; 
+    }
+
+    /* 確保標題在圖片上方（因為標題是絕對定位，zIndex 要夠） */
+    .resume-info h3 {
+        z-index: 10 !important;
+    }
+
+    /* 6. 第三張卡片 (技能) 的圖標調整 */
+    .resume-container .card:nth-of-type(3) .skills-grid-container {
+        justify-content: flex-start !important;
+        margin-bottom: -80px !important; /* 技能圖標也偏下放，呼應第一張 */
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        padding-top: 50px !important;
+        
+    }
+
+    .grid-item img {
+        width: 80px !important;
+        height: auto;
+    }
+
+    /* 1. 調整標籤容器 */
+    @media screen and (max-width: 480px) and (orientation: portrait) {
+
+    /* 1. 調整分類標籤容器：開啟換行與置中 */
+    .filter-container {
+        display: flex !important;
+        flex-wrap: wrap !important;       /* 🚀 關鍵：讓標籤塞不下時自動掉到下一行 */
+        justify-content: center !important; /* 讓換行後的按鈕都水平置中 */
+        align-items: center !important;
+        gap: 12px 6px !important;         /* 垂直間距 12px，左右 6px，防止標籤黏在一起 */
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 10px 15px !important;    /* 增加內距，確保最左最右標籤不貼螢幕邊緣 */
+        margin-bottom: 25px !important;   /* 與下方作品圖片的距離 */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. 調整標籤按鈕：適配白底背景 */
+    .filter-btn {
+        flex: 0 1 auto !important;        
+        font-size: 0.8rem !important;     /* 手機版文字縮小到 0.8rem 更精緻 */
+        padding: 6px 14px !important;     
+        white-space: nowrap !important;   
+        border-radius: 20px !important;   
+        
+        /* 視覺修正：白底上的文字顏色與邊框 */
+        color: #555 !important;           /* 加深灰色，提高閱讀性 */
+        border: 1px solid #ddd !important; /* 淺灰色邊框，比純白更有層次感 */
+        background-color: #fff !important; 
+        transition: all 0.3s ease;
+    }
+
+    /* 3. 當標籤被選中時的樣式 (Active) */
+    .filter-btn.active {
+        background-color: #007bff !important; /* 你的品牌藍色 */
+        color: #fff !important;               /* 被選中時變白字 */
+        border-color: #007bff !important;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* 輕微陰影 */
+    }
+}
+
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    /* 確保沒有任何容器限制了固定定位 */
+    html, body {
+        position: relative !important;
+        height: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .navbar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        z-index: 99999 !important; /* 加多一個 9 */
+        
+        /* 這裡是手機瀏覽器的最後防線 */
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        transform: translate3d(0, 0, 0) !important;
+    }
+}
