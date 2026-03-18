@@ -414,7 +414,7 @@
     grid-template-columns: repeat(4, 1fr) !important; 
     gap: 15px;            /* Logo 之間的間距 */
     padding: 20px 0 20px 0;
-    width: 85%;
+    width: 90%;
     flex: 1;              /* 填滿剩餘空間 */
     align-content: start; /* 網格內容從上方開始排 */
     margin-left: 60px; /* 配合標題的對齊線 */
