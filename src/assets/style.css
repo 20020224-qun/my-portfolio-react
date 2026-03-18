@@ -294,28 +294,60 @@ body {
     box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
 }
 
-/* --- 7-1 專業核心特定排版 (層級優化版) --- */
+/* --- 7-1 專業核心特定排版 (最終強化版) --- */
+.core-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 25px; 
+    /* 🚀 關鍵：確保你的卡片高度是彈性的，不然字變大會爆出去 */
+    height: auto; 
+    min-height: 400px; 
+}
+
 .value-item {
     text-align: left;
-    margin-bottom: 25px; /* 🚀 間距加大，避免大字擠在一起 */
+    margin-bottom: 25px; /* 增加間距，讓每一組「標題+內文」有獨立感 */
     width: 100%;
 }
 
 .value-label {
-    font-size: 1.5rem; /* 🚀 標題必須比內容大，或至少等大但更粗 */
-    font-weight: 900;  /* 讓標題加粗，更有份量 */
-    color: #fff;
+    font-size: 1.4rem; /* 保持你覺得「剛好」的大小 */
+    font-weight: 800;  /* 稍微加粗，增加權威感 */
+    color: #ffffff;
     margin-bottom: 10px;
-    display: block;
-    border-left: 4px solid #646cff; /* 加上這個側邊條，視覺層級會立刻提升 */
-    padding-left: 12px;
+    display: flex;     /* 改用 flex 讓小藍條更好對齊 */
+    align-items: center;
+}
+
+/* 💡 增加一個亮眼的小藍條，強化設計感 */
+.value-label::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 1.2rem;
+    background: #646cff;
+    margin-right: 12px;
+    border-radius: 2px;
 }
 
 .value-desc {
-    font-size: 1.2rem; /* 🚀 其實 1.2rem 搭配良好的行高就很清楚了 */
-    color: #f1f1f1;   /* 稍微調亮顏色 */
-    line-height: 1.8;  /* 🚀 行高加到 1.8，這是大字清晰的關鍵！ */
-    letter-spacing: 0.5px;
+    /* 🚀 關鍵修正：將內文調整為 1.1rem ~ 1.2rem 之間 */
+    font-size: 1.15rem; 
+    color: #e0e0e0; 
+    
+    /* 🚀 這是最有感的：行高加到 1.8，讓文字「呼吸」 */
+    line-height: 1.8;  
+    
+    /* 🚀 稍微降低字重，讓文字看起來清爽一點 */
+    font-weight: 400;
+    
+    /* 🚀 增加一些字距，避免中文字黏在一起 */
+    letter-spacing: 0.05rem; 
+    
+    /* 🚀 確保文字不會因為太長而自動縮小（某些瀏覽器的 bug） */
+    -webkit-text-size-adjust: 100%;
 }
 /* --- 8-1 核心經驗佈局優化 --- */
 .work-history {
