@@ -348,6 +348,7 @@ body {
     
     /* 🚀 確保文字不會因為太長而自動縮小（某些瀏覽器的 bug） */
     -webkit-text-size-adjust: 100%;
+    border: 5px solid red;
 }
 /* --- 8-1 核心經驗佈局優化 --- */
 .work-history {
