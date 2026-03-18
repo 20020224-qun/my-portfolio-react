@@ -189,9 +189,9 @@ function App() {
           <ResumeCard frontImg="/images/7-1.png" isFlipped={activeResumeIndex === 0} onFlip={() => setActiveResumeIndex(activeResumeIndex === 0 ? null : 0)}>
             <h3>專業核心</h3>
             <div className="core-values">
-              <div className="value-item"><p className="value-label">虛實整合能力</p><p className="value-desc">精準掌握 3D 建模與列印流程，確保設計完美落地。</p></div>
-              <div className="value-item"><p className="value-label">跨團隊溝通橋樑</p><p className="value-desc">銜接設計概念與生產端技術，優化產品開發進度。</p></div>
-              <div className="value-item"><p className="value-label">使用者體驗思維</p><p className="value-desc">從珠寶工藝到網頁開發，始終專注於直覺互動。</p></div>
+              <div className="value-group"><p className="value-label">虛實整合能力</p><p className="value-desc">精準掌握 3D 建模與列印流程，確保設計完美落地。</p></div>
+              <div className="value-group"><p className="value-label">跨團隊溝通橋樑</p><p className="value-desc">銜接設計概念與生產端技術，優化產品開發進度。</p></div>
+              <div className="value-group"><p className="value-label">使用者體驗思維</p><p className="value-desc">從珠寶工藝到網頁開發，始終專注於直覺互動。</p></div>
             </div>
           </ResumeCard>
           <ResumeCard frontImg="/images/8-1.png" isFlipped={activeResumeIndex === 1} onFlip={() => setActiveResumeIndex(activeResumeIndex === 1 ? null : 1)}>
