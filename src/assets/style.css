@@ -712,14 +712,14 @@ html {
 }
 
 /* ==============================
-   5. 聯絡區塊 (溫暖米色版本 - 修正版)
+   5. 聯絡區塊 (美感平衡最終版)
 ============================== */
 
 #contact {
-    padding: 140px 10% !important;
-    background-color: #faf9f6 !important; /* 確保背景是米色 */
-    color: #333333;
-    min-height: 60vh;
+    padding: 160px 10% !important; /* 增加上下留白，更有高級感 */
+    background-color: #faf9f6 !important;
+    color: #1a1a1a;
+    min-height: 70vh;
     display: flex;
     align-items: center;
 }
@@ -727,106 +727,130 @@ html {
 .contact-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1200px;
+    align-items: stretch; /* 讓左右兩欄高度一致，方便分隔線顯示 */
+    max-width: 1300px;
     margin: 0 auto;
     width: 100%;
-    gap: 80px;
+    gap: 0; /* 透過 padding 控制間距 */
 }
 
-/* 🚀 這裡修正：將 .contact-brand 改為 .contact-visual (對應你的 App.js) */
+/* 左側：大標題區塊 */
 .contact-visual {
-    flex: 1.2;
-    text-align: left; /* 強制靠左 */
+    flex: 1;
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact-title {
-    font-size: clamp(3rem, 5vw, 4.2rem) !important; /* 使用響應式字體 */
+    font-size: clamp(3.2rem, 6vw, 4.8rem) !important;
     font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -2px;
-    color: #1a1a1a !important; /* 確保是大標題深色 */
-    margin-bottom: 30px;
-    margin-top: 0;
+    line-height: 1.05;
+    letter-spacing: -3px;
+    color: #1a1a1a !important;
+    margin-bottom: 20px; /* 縮小與下方文字間距 */
 }
 
 .contact-statement {
-    font-size: 1.15rem;
-    color: #666 !important;
+    font-size: 1.1rem;
+    color: #555 !important;
     line-height: 1.8;
-    margin-top: 10px;
+    max-width: 400px;
 }
 
-/* 右側聯絡細節 */
+/* 右側：聯絡細節區塊 */
 .contact-info {
     flex: 1;
+    padding-left: 80px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    padding-left: 60px;
-    border-left: 1px solid #e0ddd5;
+    justify-content: center;
+    gap: 45px;
+    border-left: 1px solid #dcd9d0; /* 🚀 垂直分隔線：簡約、淡雅 */
 }
 
 .info-item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .info-label {
-    font-size: 0.8rem;
-    letter-spacing: 4px;
+    font-size: 0.7rem;
+    letter-spacing: 5px; /* 拉大字間距，營造標籤感 */
     color: #646cff !important;
     font-weight: 800;
+    margin-bottom: 5px;
 }
 
+/* 🚀 強化重點資訊：一眼就能看清 */
 .info-link, .info-text {
-    font-size: 1.5rem;
-    color: #222 !important;
+    font-size: 1.8rem; /* 放大字體 */
+    color: #1a1a1a !important;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700; /* 加粗 */
     transition: all 0.3s ease;
     display: inline-block;
+    line-height: 1.2;
 }
 
 .info-link:hover {
     color: #646cff !important;
-    transform: translateX(8px);
+    transform: translateX(10px);
+}
+
+/* 下載履歷特別樣式 */
+.download-link {
+    border-bottom: 2px solid transparent;
+}
+.download-link:hover {
+    border-bottom: 2px solid #646cff;
 }
 
 .email-row {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
+/* 簡約版複製按鈕 */
 .copy-btn {
-    background: #ffffff;
+    background: transparent;
     border: 1px solid #dcd9d0;
-    color: #888;
-    padding: 4px 10px;
+    color: #999;
+    padding: 3px 10px;
     border-radius: 4px;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 700;
+    letter-spacing: 1px;
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    border-color: #646cff;
+    color: #646cff;
 }
 
 .copy-btn.copied {
     background: #646cff;
     color: white;
+    border-color: #646cff;
 }
 
-/* 手機版適應 */
+/* 手機版適應：分隔線變橫線 */
 @media (max-width: 992px) {
-    .contact-container {
-        flex-direction: column;
-        gap: 50px;
+    #contact { padding: 100px 8% !important; }
+    .contact-container { flex-direction: column; }
+    .contact-visual { padding-right: 0; margin-bottom: 60px; }
+    .contact-info { 
+        padding-left: 0; 
+        border-left: none; 
+        border-top: 1px solid #dcd9d0; 
+        padding-top: 60px; 
     }
-    .contact-info {
-        padding-left: 0;
-        border-left: none;
-        border-top: 1px solid #e0ddd5;
-        padding-top: 40px;
-    }
+    .info-link, .info-text { font-size: 1.4rem; }
 }
 }
