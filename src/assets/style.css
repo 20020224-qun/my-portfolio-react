@@ -377,7 +377,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0 40px 0; /* 上留白 10, 下留白 40 增加呼吸感 */
+    padding: 40px 0 40px 0; /* 上留白 10, 下留白 40 增加呼吸感 */
     overflow: hidden;
 }
 
