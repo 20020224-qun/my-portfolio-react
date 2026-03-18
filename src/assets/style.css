@@ -59,23 +59,69 @@
     color: #646cff; /* 你的品牌色 */
 }
     
-    /* --- 2. 首頁區塊 (圖片同步加大) --- */
-    .home-container {
-        background-color: #f3f3f3;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-    }
-    .img-left {
-        position: absolute; left: 10%; top: 15%;
-        width: 700px; z-index: 1;
-    }
-    .img-right {
-        position: absolute; right: 15%; bottom: 10%;
-        width: 650px; z-index: 2;
-        filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.15));
-    }
+/* ==============================
+   1. 首頁區塊：電腦版精確對位
+============================== */
+.home-container {
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* 左圖：主視覺調整 */
+.img-left {
+    position: absolute;
+    /* 🚀 調整位置：距離左側 5%，垂直靠上 */
+    left: 5%;
+    top: 15%;
+    width: 45vw;      /* 使用 vw 讓圖片隨螢幕縮放，上限約 700-800px */
+    max-width: 800px; 
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* 右圖：副視覺調整 (疊加感) */
+.img-right {
+    position: absolute;
+    /* 🚀 調整位置：距離右側 8%，垂直靠下 */
+    right: 8%;
+    bottom: 10%;
+    width: 40vw;      /* 稍微比左圖小一點，增加透視感 */
+    max-width: 700px;
+    z-index: 2;       /* 確保疊在左圖上方 */
+    opacity: 0;
+    /* 🚀 增加更深邃的陰影，強化 3D 職人作品的份量 */
+    filter: drop-shadow(30px 30px 60px rgba(0,0,0,0.2));
+}
+
+/* --- 動態進場修正 --- */
+
+/* 左圖：從左方滑入並停在原位 */
+.scroll-reveal.active .img-left {
+    animation: slideFadeInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 右圖：延遲進場，增加節奏感 */
+.scroll-reveal.active .img-right {
+    animation: slideFadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s; 
+}
+
+@keyframes slideFadeInLeft {
+    from { opacity: 0; transform: translateX(-100px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFadeInRight {
+    from { opacity: 0; transform: translateX(100px); }
+    to { opacity: 1; transform: translateX(0); }
+}
     /* --- 3. 關於區塊 (圖片同步加大) --- */
     .about-container {
         width: 100%; height: 100vh;
