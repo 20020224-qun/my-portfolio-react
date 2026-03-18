@@ -320,17 +320,28 @@
 
 /* 2. 標題靠右並強制顯色 */
 .card-back .core-values h3 {
+    /* 🚀 位置控制 */
+    display: block !important; 
+    width: fit-content;        /* 讓寬度隨文字長度調整 */
+    margin-left: auto !important; /* 🚀 第一步：推向最右邊 */
+    margin-right: 60px !important; /* 🚀 第二步：距離右邊界 60px (你可以調大這個數值來往左一點) */
+    
+    margin-bottom: 50px !important;
+    padding-bottom: 10px;
+
+    /* 🚀 顏色與視覺 */
+    color: #ffffff !important; 
     font-size: 2.2rem !important;
     font-weight: 800 !important;
     letter-spacing: 5px !important;
-    margin-bottom: 50px !important;
-    margin-left: 60px !important; /* 🚀 靠右移動更多一點點 */
+    text-transform: uppercase;
     
-    color: #ffffff !important; /* 🚀 純白 */
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* 增加陰影確保在深色背景清晰 */
+    /* 下底線顏色 */
     border-bottom: 3px solid #646cff !important; 
-    display: inline-block;
-    padding-bottom: 10px;
+    
+    /* 確保在最上層 */
+    position: relative;
+    z-index: 10;
 }
 
 /* 3. 小標題飾條與顏色 */
