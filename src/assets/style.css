@@ -465,10 +465,15 @@
 /* ==============================
    4. 作品集區塊：藝廊感排版
 ============================== */
-#portfolio {
-    padding: 100px 5%;
-    background-color: #ffffff; /* 保持乾淨白底，襯托作品內容 */
-    min-height: 100vh;
+.portfolio-header {
+    display: flex;
+    justify-content: space-between; /* 🚀 標題在左，按鈕在右 */
+    align-items: center;            /* 🚀 垂直置中對齊 */
+    max-width: 1400px;
+    margin: 0 auto 60px auto;      /* 與下方作品牆保持距離 */
+    padding: 0 20px;
+    flex-wrap: wrap;               /* 防止在小螢幕時擠在一起 */
+    gap: 30px;                     /* 手機版換行後的間距 */
 }
 
 .portfolio-title {
