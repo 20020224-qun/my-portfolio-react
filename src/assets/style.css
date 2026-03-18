@@ -643,6 +643,7 @@ html {
     justify-content: center;
     align-items: center;
     cursor: default;               /* 內容區不要有關閉提示 */
+    transform: translateY(30px);
 }
 
 /* 🚀 3. 媒體本體 (圖片或影片) */
@@ -710,15 +711,4 @@ html {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* 📱 手機版適應：按鈕縮小或隱藏 */
-@media (max-width: 768px) {
-    .nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
-    }
-    .prev-btn { left: 15px; }
-    .next-btn { right: 15px; }
-    .close-btn { top: 20px; right: 20px; }
-}
 }
