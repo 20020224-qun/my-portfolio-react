@@ -461,4 +461,66 @@
     filter: grayscale(0%);                 /* 滑過時恢復全彩 */
     transform: scale(1.25);                 /* Logo 放大 */
 }
+
+/* ==============================
+   4. 作品集區塊：藝廊感排版
+============================== */
+#portfolio {
+    padding: 100px 5%;
+    background-color: #ffffff; /* 保持乾淨白底，襯托作品內容 */
+    min-height: 100vh;
+}
+
+.portfolio-title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 850;
+    letter-spacing: 8px;
+    margin-bottom: 60px;
+    color: #2d3436;
+    text-transform: uppercase;
+}
+
+/* 🚀 濾鏡分類選單 */
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #636e72;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    color: #646cff; /* 品牌藍 */
+}
+
+/* 🚀 藍色底線滑動效果 */
+.filter-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #646cff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.filter-btn.active::after,
+.filter-btn:hover::after {
+    width: 60%;
+}
 }
