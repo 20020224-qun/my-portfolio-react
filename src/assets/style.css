@@ -122,20 +122,58 @@
     from { opacity: 0; transform: translateX(100px); }
     to { opacity: 1; transform: translateX(0); }
 }
-    /* --- 3. 關於區塊 (圖片同步加大) --- */
-    .about-container {
-        width: 100%; height: 100vh;
-        display: flex; justify-content: center; align-items: center;
-    }
-    .about-img-left {
-        position: absolute; left: 20%; top: 45%;
-        width: 500px; z-index: 1;
-    }
-    .about-img-right {
-        position: absolute; right: 20%; bottom: 15%;
-        width: 400px; z-index: 2;
-        filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.1));
-    }
+/* ==============================
+   2. 關於區塊：電腦版精緻排版
+============================== */
+.about-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* 確保背景純淨 */
+}
+
+/* 關於我 - 左圖 (2-2.png)：作為底色或背景裝飾 */
+.about-img-left {
+    position: absolute;
+    /* 🚀 座標：偏左中，稍微上浮 */
+    left: 15%;
+    top: 25%;
+    width: 35vw; 
+    max-width: 550px;
+    z-index: 1;
+    opacity: 0;
+    /* 增加一點模糊或低對比，讓它更像背景層（可選） */
+    filter: brightness(1.05);
+}
+
+/* 關於我 - 右圖 (2.png)：核心人物或作品視覺 */
+.about-img-right {
+    position: absolute;
+    /* 🚀 座標：偏右下，與左圖形成斜對角 */
+    right: 18%;
+    bottom: 12%;
+    width: 28vw; 
+    max-width: 450px;
+    z-index: 2;
+    opacity: 0;
+    /* 🚀 職人感陰影：比首頁稍微柔和一點 */
+    filter: drop-shadow(15px 15px 40px rgba(0,0,0,0.08));
+}
+
+/* --- 關於區塊進場動畫 (沿用首頁 Keyframes) --- */
+
+.scroll-reveal.active .about-img-left {
+    animation: slideFadeInLeft 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scroll-reveal.active .about-img-right {
+    animation: slideFadeInRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s; /* 🚀 延遲稍長，營造優雅感 */
+}
 
     /* --- 4. 簡歷卡片系統 (7-1, 8-1, 9-1) --- */
     .resume-container {
