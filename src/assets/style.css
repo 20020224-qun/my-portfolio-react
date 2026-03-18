@@ -318,9 +318,25 @@
     background: transparent !important; /* 確保沒有背景色遮擋 */
 }
 
+
 /* ==============================
    卡背標題統一：靠右、顯色、高級感
 ============================== */
+
+/* 🚀 統一 7-1, 8-1, 9-1 的容器行為 */
+.card-back .core-values,
+.card-back .experience-content,
+.card-back .skills-content {
+    display: flex !important;
+    flex-direction: column !important;
+    /* 🚀 關鍵：從頂部開始排，不要置中 */
+    justify-content: flex-start !important; 
+    /* 🚀 統一 Padding，這決定了標題距離卡片頂部的基礎高度 */
+    padding: 60px 80px !important;         
+    height: 100%;
+    box-sizing: border-box;
+}
+
 .card-back h3 {
     /* 🚀 靠左對齊核心邏輯 */
     display: block !important;
@@ -332,8 +348,8 @@
     
     /* 🚀 視覺格式 */
     margin-top: 50px !important;    /* 距離頂部一點距離 */
-    margin-bottom: 30px !important;
-    padding-bottom: 8px;
+    margin-bottom: 40px !important;
+    
     
     color: #ffffff !important;      /* 純白顯色 */
     font-size: 2.2rem !important;
