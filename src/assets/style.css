@@ -201,53 +201,86 @@
     to { opacity: 1; transform: translateY(-50%) translateX(0); }
 }
 
-    /* --- 4. 簡歷卡片系統 (7-1, 8-1, 9-1) --- */
-    .resume-container {
-        display: flex; justify-content: center; align-items: center;
-        gap: 20px; width: 90%; max-width: 1200px; height: 550px; margin: 0 auto;
-    }
-    .card.active-card { flex: 3.5; } /* 展開時再寬一點，給文字空間 */
+/* ==============================
+   3. 簡歷區塊：電腦版動態擴展
+============================== */
+#resume {
+    background-color: #f3f3f3;
+    padding: 100px 0; /* 增加上下留白，讓視覺更聚焦 */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
 
-    /* --- 7-1 專業核心：最終清晰大字版 --- */
-    .resume-info .core-values .value-item .value-label {
-        font-size: 1.5rem !important; /* 標題穩住重心 */
-        font-weight: 800 !important;
-        color: #ffffff !important;
-        margin-bottom: 12px !important;
-        display: flex; align-items: center;
-    }
-    .resume-info .core-values .value-item .value-label::before {
-        content: ""; display: inline-block; width: 4px; height: 1.2rem;
-        background: #646cff; margin-right: 12px; border-radius: 2px;
-    }
-    .resume-info .core-values .value-item .value-desc {
-        font-size: 1.25rem !important; /* 內文大而清晰 */
-        color: #f1f1f1 !important;
-        line-height: 1.8 !important; /* 呼吸感 */
-        font-weight: 400 !important;
-        letter-spacing: 0.05rem !important;
-    }
+.resume-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* 卡片間距稍微拉開 */
+    width: 90%;
+    max-width: 1300px; /* 🚀 加寬最大邊界 */
+    height: 650px;     /* 🚀 增加總高度，確保 3D 建模與文字都能裝下 */
+    margin: 0 auto;
+}
 
-    /* --- 8-1 核心經驗：佈局優化 --- */
-    .work-history { padding: 100px 40px 0 40px !important; }
-    .side-track { width: 40%; border-left: 4px solid rgba(0, 123, 255, 0.4); padding-left: 20px; }
-    .main-track { width: 60%; border-left: 3px solid #007bff; padding-left: 25px; }
-    .side-job { font-size: 1.2rem; font-weight: 800; color: #5fb2ff; }
+.card {
+    flex: 1; /* 縮小時的比例 */
+    height: 100%;
+    cursor: pointer;
+    perspective: 1500px; 
+    transition: flex 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    /* --- 9-1 技能專長：圖片撐滿無縫版 --- */
-    .skills-grid-container {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-        padding: 100px 0 0 0; width: 100%; height: 100%;
-    }
-    .grid-item { overflow: hidden; display: flex; justify-content: center; align-items: center; }
-    .grid-item img {
-        width: 100% !important; /* 🚀 強制撐滿格子，消滅縮小感 */
-        height: 100% !important;
-        object-fit: contain; /* 確保 Logo 不變形 */
-        transition: transform 0.3s ease-out;
-    }
-    .grid-item:hover { overflow: visible; z-index: 30; }
-    .grid-item:hover img { transform: scale(1.4); filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)); }
+/* 🚀 關鍵：展開後的比例，從 3 改成 4，給文字更多呼吸空間 */
+.card.active-card { 
+    flex: 4; 
+}
+
+/* --- 7-1 專業核心 (卡片背面文字優化) --- */
+.resume-info .core-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px; /* 🚀 增加內距，營造精品作品集的留白感 */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.resume-info .core-values .value-item {
+    margin-bottom: 35px; /* 🚀 增加每一組內容的垂直間距 */
+}
+
+/* 標題與內文的最終比例鎖定 */
+.resume-info .core-values .value-item .value-label {
+    font-size: 1.6rem !important; 
+    margin-bottom: 15px !important;
+    letter-spacing: 2px !important;
+}
+
+.resume-info .core-values .value-item .value-desc {
+    font-size: 1.3rem !important; /* 🚀 保持大字版，這是在大螢幕最舒適的字體 */
+    line-height: 1.9 !important; /* 🚀 微調行高，讓閱讀感更絲滑 */
+    color: #e0e0e0 !important;
+}
+
+/* --- 8-1 核心經驗 (卡片 2 優化) --- */
+.work-history {
+    padding: 80px 50px !important;
+}
+
+.tree-wrapper {
+    gap: 60px; /* 拉開左右軌道間距 */
+}
+
+/* --- 9-1 技能專長 (卡片 3 優化) --- */
+.skills-grid-container {
+    padding: 100px 40px 40px 40px; /* 增加四周邊距，讓 Icon 不要貼死邊框 */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 100%;
+}
 
     /* --- 5. 聯絡區塊：極簡大氣版 --- */
     .contact-container {
