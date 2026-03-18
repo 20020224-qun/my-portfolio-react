@@ -412,7 +412,7 @@
     display: grid !important;
     /* 🚀 強制排成 4 欄，每欄等寬 */
     grid-template-columns: repeat(4, 1fr) !important; 
-    gap: 35px;            /* Logo 之間的間距 */
+    gap: 40px;            /* Logo 之間的間距 */
     padding: 40px 0 20px 0;
     width: 92%;
     flex: 1;              /* 填滿剩餘空間 */
