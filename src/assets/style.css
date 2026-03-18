@@ -214,29 +214,41 @@
 
 .resume-container {
     display: flex;
-    justify-content: center; /* 🚀 確保卡片在容器內置中 */
+    justify-content: center;
     align-items: center;
-    gap: 40px;               /* 🚀 增加間距，讓職人作品感更強 */
-    width: 95%;              /* 增加容納寬度 */
+    gap: 30px; 
+    width: 95%;
     max-width: 1400px;
-    height: 600px;
+    height: 650px; /* 稍微加高一點，內容更舒服 */
     margin: 0 auto;
 }
 
 .card {
-    /* 🚀 初始狀態：三張卡片完全等寬 */
+    /* 🚀 初始狀態：三張卡片均分空間 */
     flex: 1; 
     height: 100%;
-    max-width: 400px;        /* 🚀 限制初始寬度，避免縮小時太寬，展開時太窄 */
+    
+    /* 🚀 關鍵 1：設定最小寬度，防止被擠到「極致」 */
+    min-width: 150px; 
+    
+    /* 🚀 關鍵 2：取消原本死板的 max-width 400px */
+    /* 改用 flex-basis 來控製初始大小感 */
+    flex-basis: 300px; 
+    
     perspective: 1500px;
     cursor: pointer;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 🚀 點擊後：展開的卡片打破寬度限制並撐開 */
+/* 🚀 當其中一張卡片被點擊 (Active) 時 */
 .card.active-card {
-    flex: 4;                 /* 展開比例 */
-    max-width: 900px;        /* 🚀 展開後的最大寬度限制 */
+    /* 🚀 關鍵 3：展開比例稍微調降到 2.5 或 3，讓旁邊有生存空間 */
+    flex: 3; 
+    
+    /* 🚀 關鍵 4：給展開後的卡片一個合理的寬度範圍 */
+    min-width: 600px; 
+    max-width: 900px; 
+    z-index: 10; /* 確保陰影在最上層 */
 }
 
 .card-inner {
