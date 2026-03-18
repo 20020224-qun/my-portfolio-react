@@ -412,12 +412,12 @@
     display: grid !important;
     /* 🚀 強制排成 4 欄，每欄等寬 */
     grid-template-columns: repeat(4, 1fr) !important; 
-    gap: 15px;            /* Logo 之間的間距 */
+    gap: 20px;            /* Logo 之間的間距 */
     padding: 20px 0 20px 0;
     width: 90%;
     flex: 1;              /* 填滿剩餘空間 */
     align-content: start; /* 網格內容從上方開始排 */
-    margin-left: 60px; /* 配合標題的對齊線 */
+    margin-left: 40px; /* 配合標題的對齊線 */
 }
 
 /* 🚀 每個圖示的方格 */
@@ -432,7 +432,8 @@
     /* 🚀 關鍵修改：用百分比 Padding 強制圖片佔 75% */
     padding: 12.5% !important; 
     
-    max-width: 80px; /* 這裡維持你的大小限制 */
+    width: 100%;
+    max-width: 100px; /* 這裡維持你的大小限制 */
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-sizing: border-box; /* 確保 padding 不會撐大方格本體 */
