@@ -402,4 +402,56 @@
 .card-back .experience-image-container:hover .full-res-img {
     transform: scale(1.03);
 }
+
+/* ==============================
+   9-1 技能專長：網格展示
+============================== */
+
+/* 🚀 網格容器：控制整體排列 */
+.card-back .skills-grid-container {
+    display: grid !important;
+    /* 🚀 強制排成 4 欄，每欄等寬 */
+    grid-template-columns: repeat(4, 1fr) !important; 
+    gap: 25px;            /* Logo 之間的間距 */
+    padding: 10px 0 40px 0;
+    width: 100%;
+    flex: 1;              /* 填滿剩餘空間 */
+    align-content: start; /* 網格內容從上方開始排 */
+}
+
+/* 🚀 每個圖示的方格 */
+.card-back .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05); /* 淡淡的底色方塊 */
+    border-radius: 12px;
+    aspect-ratio: 1 / 1;      /* 確保是正方形 */
+    padding: 15px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 🚀 圖示本體 */
+.card-back .grid-item img {
+    width: 80%;               /* 不要撐太滿，留點呼吸感 */
+    height: 80%;
+    object-fit: contain;      /* 保持比例 */
+    filter: grayscale(20%);   /* 稍微降飽和度，更有職人感 */
+    transition: all 0.4s ease;
+}
+
+/* 🚀 滑鼠滑過效果 (Hover) */
+.card-back .grid-item:hover {
+    background: rgba(100, 108, 255, 0.15); /* 品牌藍背景 */
+    border-color: #646cff;                 /* 品牌藍邊框 */
+    transform: translateY(-5px);           /* 微微浮起 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(100, 108, 255, 0.4);
+}
+
+.card-back .grid-item:hover img {
+    filter: grayscale(0%);                 /* 滑過時恢復全彩 */
+    transform: scale(1.1);                 /* Logo 放大 */
+}
 }
