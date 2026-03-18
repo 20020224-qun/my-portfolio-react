@@ -414,7 +414,7 @@
     grid-template-columns: repeat(4, 1fr) !important; 
     gap: 30px;            /* Logo 之間的間距 */
     padding: 40px 0 20px 0;
-    width: 90%;
+    width: 92%;
     flex: 1;              /* 填滿剩餘空間 */
     align-content: start; /* 網格內容從上方開始排 */
     margin-left: 20px; /* 配合標題的對齊線 */
@@ -433,7 +433,7 @@
     padding: 12.5% !important; 
 
     width: 100%;
-    max-width: 100px; /* 這裡維持你的大小限制 */
+    max-width: 150px; /* 這裡維持你的大小限制 */
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-sizing: border-box; /* 確保 padding 不會撐大方格本體 */
