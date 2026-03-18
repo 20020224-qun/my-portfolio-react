@@ -55,20 +55,20 @@ function ResumeCard({ frontImg, children, isFlipped, onFlip }) {
     <div className={`card ${isFlipped ? 'active-card' : ''}`} onClick={onFlip}>
       <div className="card-inner">
         <div className="card-front"><img src={frontImg} alt="Front" /></div>
-        <div className="card-back"><div className="resume-info">{children}</div></div>
+        <div className="card-back">{children}</div>
       </div>
     </div>
   );
 }
 
-// --- 技能卡片 ---
+// --- 技能卡片 (9-1) ---
 function SkillCard({ isFlipped, onFlip }) {
   return (
     <div className={`card ${isFlipped ? 'active-card' : ''}`} onClick={onFlip}>
       <div className="card-inner">
         <div className="card-front"><img src="/images/9-1.png" alt="Skills" /></div>
         <div className="card-back">
-          <div className="resume-info">
+          <div className="skills-content">
             <h3>技能專長</h3>
             <div className="skills-grid-container">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(num => (
@@ -89,8 +89,6 @@ function App() {
   const [activeResumeIndex, setActiveResumeIndex] = useState(null); 
   const [selectedProject, setSelectedProject] = useState(null);
   const [copied, setCopied] = useState(false);
-  
-  // --- 漢堡選單狀態 ---
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const filteredProjects = projects.filter(p => filter === 'all' || p.category === filter);
@@ -147,11 +145,10 @@ function App() {
       <nav className="navbar">
         <div className="logo">
           <a href="/" onClick={(e) => { e.preventDefault(); window.location.href = "/"; }}>
-          <img src="/images/logo.png" alt="Logo" />
+            <img src="/images/logo.png" alt="Logo" />
           </a>
         </div>
 
-        {/* 漢堡選單按鈕：帶有灰色方框設計 */}
         <div className={`hamburger-container ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <div className="hamburger-box">
             <span></span>
@@ -160,7 +157,6 @@ function App() {
           </div>
         </div>
 
-        {/* 下拉選單：從 Navbar 下方垂直滑出，文字靠左 */}
         <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
           <li><a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a></li>
           <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
@@ -185,56 +181,53 @@ function App() {
       </section>
 
       <section id="resume" className="section">
-  <div className="resume-container scroll-reveal">
-    
-    {/* --- 7-1 專業核心 --- */}
-    <ResumeCard 
-      frontImg="/images/7-1.png" 
-      isFlipped={activeResumeIndex === 0} 
-      onFlip={() => setActiveResumeIndex(activeResumeIndex === 0 ? null : 0)}
-    >
-      <div className="core-values">
-        <h3>專業核心</h3>
-        
-        <div className="value-group">
-          <p className="value-label">虛實整合能力</p>
-          <p className="value-desc">精準掌握 3D 建模與列印流程，確保設計完美落地。</p>
-        </div>
-        
-        <div className="value-group">
-          <p className="value-label">跨團隊溝通橋樑</p>
-          <p className="value-desc">銜接設計概念與生產端技術，優化產品開發進度。</p>
-        </div>
-        
-        <div className="value-group">
-          <p className="value-label">使用者體驗思維</p>
-          <p className="value-desc">從珠寶工藝到網頁開發，始終專注於直覺互動。</p>
-        </div>
-      </div>
-    </ResumeCard>
+        <div className="resume-container scroll-reveal">
+          
+          {/* --- 7-1 專業核心 --- */}
+          <ResumeCard 
+            frontImg="/images/7-1.png" 
+            isFlipped={activeResumeIndex === 0} 
+            onFlip={() => setActiveResumeIndex(activeResumeIndex === 0 ? null : 0)}
+          >
+            <div className="core-values">
+              <h3>專業核心</h3>
+              <div className="value-group">
+                <p className="value-label">虛實整合能力</p>
+                <p className="value-desc">精準掌握 3D 建模與列印流程，確保設計完美落地。</p>
+              </div>
+              <div className="value-group">
+                <p className="value-label">跨團隊溝通橋樑</p>
+                <p className="value-desc">銜接設計概念與生產端技術，優化產品開發進度。</p>
+              </div>
+              <div className="value-group">
+                <p className="value-label">使用者體驗思維</p>
+                <p className="value-desc">從珠寶工藝到網頁開發，始終專注於直覺互動。</p>
+              </div>
+            </div>
+          </ResumeCard>
 
-    {/* --- 8-1 核心經驗 --- */}
-    <ResumeCard 
-      frontImg="/images/8-1.png" 
-      isFlipped={activeResumeIndex === 1} 
-      onFlip={() => setActiveResumeIndex(activeResumeIndex === 1 ? null : 1)}
-    >
-      <div className="experience-content">
-        <h3>核心經驗</h3>
-        <div className="experience-image-container">
-          <img src="/images/8-2.png" className="full-res-img" alt="Experience" />
+          {/* --- 8-1 核心經驗 --- */}
+          <ResumeCard 
+            frontImg="/images/8-1.png" 
+            isFlipped={activeResumeIndex === 1} 
+            onFlip={() => setActiveResumeIndex(activeResumeIndex === 1 ? null : 1)}
+          >
+            <div className="experience-content">
+              <h3>核心經驗</h3>
+              <div className="experience-image-container">
+                <img src="/images/8-2.png" className="full-res-img" alt="Experience" />
+              </div>
+            </div>
+          </ResumeCard>
+
+          {/* --- 9-1 技能專長 --- */}
+          <SkillCard 
+            isFlipped={activeResumeIndex === 2} 
+            onFlip={() => setActiveResumeIndex(activeResumeIndex === 2 ? null : 2)} 
+          />
+
         </div>
-      </div>
-    </ResumeCard>
-
-    {/* --- 9-1 技能專長 --- */}
-    <SkillCard 
-      isFlipped={activeResumeIndex === 2} 
-      onFlip={() => setActiveResumeIndex(activeResumeIndex === 2 ? null : 2)} 
-    />
-
-  </div>
-</section>
+      </section>
 
       <section id="portfolio" className="section">
         <div className="portfolio-container scroll-reveal">
@@ -259,7 +252,6 @@ function App() {
         </div>
       </section>
 
-      {/* --- 聯絡區塊 --- */}
       <section id="contact" className="section">
         <div className="contact-container scroll-reveal">
           <div className="contact-visual">
