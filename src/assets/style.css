@@ -365,4 +365,41 @@
     margin-bottom: 25px !important;
     font-weight: 400 !important;
 }
+
+/* ==============================
+   8-1 核心經驗：圖片展示專用
+============================== */
+
+/* 🚀 圖片容器：填滿標題下方的剩餘空間 */
+.card-back .experience-image-container {
+    flex: 1;           /* 讓容器自動撐開填滿剩餘高度 */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 40px 0; /* 上留白 10, 下留白 40 增加呼吸感 */
+    overflow: hidden;
+}
+
+/* 🚀 圖片本體：增加職人質感 */
+.card-back .full-res-img {
+    width: 90%;        /* 寬度佔 90%，留一點邊框感 */
+    height: auto;
+    max-height: 400px; /* 限制最大高度，防止把卡片撐爆 */
+    object-fit: contain;
+    
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 極細白邊 */
+    
+    /* 🚀 增加淡淡的藍色發光，呼應你的品牌色 #646cff */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                0 0 15px rgba(100, 108, 255, 0.2);
+    
+    transition: transform 0.5s ease;
+}
+
+/* 🚀 翻面後的小驚喜：滑鼠滑過圖片會微微放大 */
+.card-back .experience-image-container:hover .full-res-img {
+    transform: scale(1.03);
+}
 }
