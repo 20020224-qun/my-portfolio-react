@@ -325,8 +325,8 @@
     /* 🚀 靠右對齊核心邏輯 */
     display: block !important;
     width: fit-content !important; /* 必須設為 fit-content，auto 推力才有效 */
-    margin-left: auto !important;  /* 🚀 把左邊撐開，推向右方 */
-    margin-right: 40px !important; /* 🚀 距離右邊界留一點呼吸空間 */
+    margin-right: auto !important;  /* 🚀 把左邊撐開，推向右方 */
+    margin-left: 40px !important; /* 🚀 距離右邊界留一點呼吸空間 */
     
     /* 🚀 視覺格式 */
     margin-top: 40px !important;    /* 距離頂部一點距離 */
@@ -352,7 +352,7 @@
     font-size: 1.5rem !important;
     font-weight: 700 !important;
     color: #ffffff !important; /* 🚀 強制白色 */
-    margin-bottom: 12px !important;
+    margin-bottom: 5px !important;
     display: flex;
     align-items: center;
 }
