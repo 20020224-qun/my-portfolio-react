@@ -334,11 +334,11 @@ body {
 
 .value-desc {
     /* 🚀 關鍵修正：將內文調整為 1.1rem ~ 1.2rem 之間 */
-    font-size: 1.15rem; 
+    font-size: 1.15rem !important;
     color: #e0e0e0; 
     
     /* 🚀 這是最有感的：行高加到 1.8，讓文字「呼吸」 */
-    line-height: 1.8;  
+    line-height: 1.8 !important; 
     
     /* 🚀 稍微降低字重，讓文字看起來清爽一點 */
     font-weight: 400;
