@@ -147,7 +147,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
 }
 
 /* 關於我 - 左圖 (2-2.png) */
@@ -202,95 +202,92 @@
 }
 
 /* ==============================
-   3. 簡歷區塊：電腦版動態擴展
+   3. 簡歷區塊：專業 3D 翻牌系統
 ============================== */
-#resume {
-    background-color: #f3f3f3;
-    padding: 100px 0; /* 增加上下留白，讓視覺更聚焦 */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
 .resume-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* 卡片間距稍微拉開 */
+    gap: 30px;
     width: 90%;
-    max-width: 1300px; /* 🚀 加寬最大邊界 */
-    height: 650px;     /* 🚀 增加總高度，確保 3D 建模與文字都能裝下 */
+    max-width: 1300px;
+    height: 600px; /* 增加高度確保文字舒適 */
     margin: 0 auto;
 }
 
 .card {
-    flex: 1; /* 縮小時的比例 */
+    flex: 1;
     height: 100%;
+    perspective: 1500px; /* 3D 視距 */
     cursor: pointer;
-    perspective: 1500px; 
     transition: flex 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 🚀 關鍵：展開後的比例，從 3 改成 4，給文字更多呼吸空間 */
-.card.active-card { 
+/* 🚀 點擊後變寬：一次只能翻一張的邏輯由 React 控制 className */
+.card.active-card {
     flex: 4; 
 }
 
-/* --- 7-1 專業核心 (卡片背面文字優化) --- */
-.resume-info .core-values {
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d; /* 核心：開啟 3D 空間 */
+}
+
+/* 🚀 翻轉觸發 */
+.card.active-card .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* 翻轉時隱藏背面 */
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* --- 卡面設定 --- */
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- 🚀 統一卡背：7-2.jpg + 灰色半透明疊加層 --- */
+.card-back {
+    background-color: #2d3436; /* 基礎深灰色 */
+    transform: rotateY(180deg);
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    padding: 60px; /* 🚀 增加內距，營造精品作品集的留白感 */
+    align-items: center;
+}
+
+/* 使用 ::before 來放入 7-2.jpg 並調整透明度 */
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('/images/7-2.jpg'); /* 請確保路徑正確 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15; /* 🚀 灰色半透明感：讓它變得很像背景 */
+    z-index: 0;
+}
+
+/* 確保內容在背景之上 */
+.resume-info {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
 }
-
-.resume-info .core-values .value-item {
-    margin-bottom: 35px; /* 🚀 增加每一組內容的垂直間距 */
 }
-
-/* 標題與內文的最終比例鎖定 */
-.resume-info .core-values .value-item .value-label {
-    font-size: 1.6rem !important; 
-    margin-bottom: 15px !important;
-    letter-spacing: 2px !important;
-}
-
-.resume-info .core-values .value-item .value-desc {
-    font-size: 1.3rem !important; /* 🚀 保持大字版，這是在大螢幕最舒適的字體 */
-    line-height: 1.9 !important; /* 🚀 微調行高，讓閱讀感更絲滑 */
-    color: #e0e0e0 !important;
-}
-
-/* --- 8-1 核心經驗 (卡片 2 優化) --- */
-.work-history {
-    padding: 80px 50px !important;
-}
-
-.tree-wrapper {
-    gap: 60px; /* 拉開左右軌道間距 */
-}
-
-/* --- 9-1 技能專長 (卡片 3 優化) --- */
-.skills-grid-container {
-    padding: 100px 40px 40px 40px; /* 增加四周邊距，讓 Icon 不要貼死邊框 */
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    height: 100%;
-}
-
-    /* --- 5. 聯絡區塊：極簡大氣版 --- */
-    .contact-container {
-        display: flex; justify-content: space-between;
-        width: 85%; max-width: 1200px; margin: 0 auto;
-    }
-    .contact-title { font-size: 5rem; letter-spacing: -2px; }
-    .info-link, .info-text { font-size: 1.5rem; font-weight: 500; }
-}
-/* ============================================================
-   🖥️ 電腦版樣式結束
-   ============================================================ */
-
